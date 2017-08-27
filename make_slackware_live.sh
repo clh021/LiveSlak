@@ -68,7 +68,7 @@ EFI32=${EFI32:-"NO"}
 SMP32=${SMP32:-"NO"}
 
 # Include support for NFS root (PXE boot), will increase size of the initrd:
-NFSROOTSUP=${NFSROOTSUP:-"YES"}
+NFSROOTSUP=${NFSROOTSUP:-"NO"}
 
 # Use xorriso instead of mkisofs/isohybrid to create the ISO:
 USEXORR=${USEXORR:-"NO"}
@@ -84,7 +84,7 @@ THEDATE=$(date +%Y%m%d)
 LIVEUID=${LIVEUID:-"live"}
 
 # The root and live user passwords of the image:
-ROOTPW=${ROOTPW:-"root"}
+ROOTPW=${ROOTPW:-"toor"}
 LIVEPW=${LIVEPW:-"live"}
 
 # Distribution name:
@@ -118,7 +118,7 @@ WAIT=${WAIT:-"5"}
 #
 
 # Who built the live image:
-BUILDER=${BUILDER:-"Alien BOB"}
+BUILDER=${BUILDER:-"MDrights"}
 
 # Console font to use with syslinux for better language support:
 CONSFONT=${CONSFONT:-"ter-i16v.psf"}

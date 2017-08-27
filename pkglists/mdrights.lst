@@ -9,6 +9,7 @@ fcitx
 fcitx-configtool
 
 ## 上网和一些工具（你懂的）
+firejail
 icecat
 icecat-hardened
 NetworkManager-nonprism
@@ -19,6 +20,8 @@ tor-browser
 torsocks
 privoxy
 proxychains
+libev
+shadowsocks-libev
 #telegram
 #riot-web
 
@@ -27,3 +30,6 @@ rxvt-unicode
 
 ## 字体（太大了暂放入）
 #noto-cjk-font-ttf
+
+## Write words/charts
+libreoffice
