@@ -27,10 +27,10 @@ pangomm
 pavucontrol
 pidgin
 rdesktop
-rxvt
+#rxvt
 sane
 seamonkey-solibs
-tigervnc
+#tigervnc
 vim
 vim-gvim
 x11-ssh-askpass
