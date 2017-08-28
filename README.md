@@ -11,6 +11,10 @@ Forked from Alien Bob's powerful building script for Slackware Live. Thank you, 
 
 ## Usage
 
+如果你是最终用户，请阅读：[LiveSlak 介绍](https://mdrights.github.io/os-observe/posts/2017/08/Liveslak-intro.html)
+
+## Build
+
 **如果你也想自己制作 LiveSlak 系统**   
 
 请构建时导入这里的脚本构建的安装包：[Slackbuilds-nonprism](https://github.com/mdrights/Slackbuilds-nonprism) ，请先下载该 repo 并构建每个软件包，放置于同一个目录下（比如 $HOME/slackwareCN），LiveSlak 构建时会导入这些软件包。
@@ -24,4 +28,13 @@ Forked from Alien Bob's powerful building script for Slackware Live. Thank you, 
 
 
 <hr>
-_构建脚本的详细介绍和使用方法请见 Alien的 [README.txt](https://github.com/mdrights/LiveSlak/blob/mdrights/README.txt)_
+构建脚本的详细介绍和使用方法请见 Alien的 [README.txt](https://github.com/mdrights/LiveSlak/blob/mdrights/README.txt)
+
+=========
+Copyright 2014 - 2017 Eric Hameleers, Eindhoven, NL
+Copyright 2017 MDrights <mdrights at tutanota dot de>
+All rights reserved
+
+只要本版权声明和许可声明出现在所有版本的本软件中，本软件即可被允许以任何目的（有偿或无偿地）使用、复制、修改和分发。
+=========
+
