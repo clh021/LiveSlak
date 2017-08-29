@@ -30,11 +30,13 @@ Forked from Alien Bob's powerful building script for Slackware Live. Thank you, 
 <hr>
 构建脚本的详细介绍和使用方法请见 Alien的 [README.txt](https://github.com/mdrights/LiveSlak/blob/mdrights/README.txt)
 
-=========
-Copyright 2014 - 2017 Eric Hameleers, Eindhoven, NL
-Copyright 2017 MDrights <mdrights at tutanota dot de>
-All rights reserved
 
-只要本版权声明和许可声明出现在所有版本的本软件中，本软件即可被允许以任何目的（有偿或无偿地）使用、复制、修改和分发。
+=========   
+Copyright 2014 - 2017 Eric Hameleers, Eindhoven, NL  
+Copyright 2017 MDrights (mdrights at tutanota dot de)  
+All rights reserved  
+
+只要本版权声明和许可声明出现在所有版本的本软件中，本软件即可被允许以任何目的（有偿或无偿地）使用、复制、修改和分发。  
+
 =========
 
