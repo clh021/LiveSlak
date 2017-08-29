@@ -1162,13 +1162,6 @@ echo "-- Configuring the base system."
 umount ${LIVE_ROOTDIR} 2>${DBGOUT} || true
 mount -t overlay -o lowerdir=${RODIRS},upperdir=${INSTDIR},workdir=${LIVE_OVLDIR} overlay ${LIVE_ROOTDIR}
 
-# Change permissions of rc files so as to control startup services:
-chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.bluetooth
-chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.cups
-chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.cups-browsed
-chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.rpc
-chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.inet2
-
 # Determine the kernel version in the Live OS:
 if [ "$SL_ARCH" = "x86_64" -o "$SMP32" = "NO" ]; then
   KGEN=$(ls --indicator-style=none ${LIVE_ROOTDIR}/var/log/packages/kernel*modules* |grep -v smp |head -1 |rev | cut -d- -f3 |tr _ - |rev)
@@ -1360,10 +1353,8 @@ yes o | ARCH=${SL_ARCH} /usr/sbin/slackpkg new-config
 EOSL
 
 if [ -f ${LIVE_ROOTDIR}/etc/rc.d/rc.networkmanager ]; then
-  # Enable NetworkManager if present, and thus disable the default:
+  # Enable NetworkManager if present:
   chmod +x ${LIVE_ROOTDIR}/etc/rc.d/rc.networkmanager
-  chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.inet1
-  chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.wireless
   # And disable Slackware's own way of configuring eth0:
   cat <<EOT > ${LIVE_ROOTDIR}/etc/rc.d/rc.inet1.conf
 IFNAME[0]="eth0"
@@ -2253,9 +2244,7 @@ echo "-- Assemble the ISO image."
 
 # We keep strict size requirements for the XFCE ISO:
 # addons/optional modules will not be added.
-# Modified by MDrights for enabling addons & optional things in XFCE.
-
-if [ "$LIVEDE" != "SLACKWARE"  ]; then
+if [ "$LIVEDE" != "XFCE"  ]; then
   # Copy our stockpile of add-on modules into place:
   if ls ${LIVE_TOOLDIR}/addons/*.sxz 1>/dev/null 2>&1 ; then
     cp ${LIVE_TOOLDIR}/addons/*.sxz ${LIVE_MOD_ADD}/

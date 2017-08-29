@@ -9,6 +9,11 @@ Forked from Alien Bob's powerful building script for Slackware Live. Thank you, 
     - 隐私和安全相关的应用
     - 系统加固（TODO）
 
+## My modification
+
+- #1165 & #1366: chmod a bunch of rc files as to disable them starting in booting: e.g. bluetooth,rpc,cups. If NetworkManager is installed, disabling inet1 and wireless as well.
+- #2248: Enabling the addons/ & optional/ directories under XFCE mode (substituted by SLACKWARE)
+
 ## Usage
 
 如果你是最终用户，请阅读：[LiveSlak 介绍](https://mdrights.github.io/os-observe/posts/2017/08/Liveslak-intro.html)
@@ -28,7 +33,7 @@ Forked from Alien Bob's powerful building script for Slackware Live. Thank you, 
 
 
 <hr>
-构建脚本的详细介绍和使用方法请见 Alien的 [README.txt](https://github.com/mdrights/LiveSlak/blob/mdrights/README.txt)
+构建脚本的详细介绍和使用方法请见 Alien的 [README.txt](https://github.com/mdrights/LiveSlak/blob/mdrights/README.txt) 
 
 
 =========   
