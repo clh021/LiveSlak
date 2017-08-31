@@ -2,5 +2,5 @@
 bash-completion
 bittorrent
 fltk
-recordmydesktop
-tigervnc
+#recordmydesktop
+#tigervnc

@@ -20,10 +20,17 @@ tor-browser
 torsocks
 privoxy
 proxychains
+udns
+mbedtls
+libsodium
+pcre2
 libev
 shadowsocks-libev
-#telegram
-#riot-web
+telegram
+gmtk
+#libgpod
+#libwebp
+gnome-mplayer
 
 ## 支持中文的终端
 rxvt-unicode

@@ -39,7 +39,7 @@ gcc
 ghostscript
 #ghostscript-fonts-std
 glibc
-#glibc-solibs
+glibc-solibs
 glibc-zoneinfo
 gnupg
 gnupg2
