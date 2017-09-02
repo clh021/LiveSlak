@@ -275,6 +275,7 @@ cleanup() {
   rmdir ${LIVE_WORK}/*_$$ 2>${DBGOUT}
   rm ${LIVE_MOD_OPT}/* 2>${DBGOUT} || true
   rm ${LIVE_MOD_ADD}/* 2>${DBGOUT} || true
+  rm -r ${LIVE_STAGING}/* 2>${DBGOUT} || true
 }
 trap 'echo "*** $0 FAILED at line $LINENO ***"; cleanup; exit 1' ERR INT TERM
 
@@ -1551,7 +1552,8 @@ cat << "EOT" > ${LIVE_ROOTDIR}/etc/skel/.profile
 [[ -r ~/.bashrc ]] && . ~/.bashrc
 
 # Define some useful aliases:
-alias ll="ls -la $LS_OPTIONS"
+alias ls="ls --color=auto $LS_OPTIONS"
+alias ll="ls -la --color=auto $LS_OPTIONS"
 lsp() { basename $(ls -1 "/var/log/packages/$@"*) ; }
 alias md="mkdir"
 alias tarview="tar -tvf"
@@ -1828,6 +1830,16 @@ if type custom_config 1>/dev/null 2>/dev/null ; then
   # in 'make_slackware_live.conf', in which case you must specify your custom
   # package sequence in the variable "SEQ_CUSTOM" in that same .conf file.
   custom_config
+
+  # Copied from the XFCE session;
+  # Also, allow other people to add their own custom skel*.txz archives:
+  mkdir -p ${LIVE_ROOTDIR}/etc/skel/
+  for SKEL in ${LIVE_TOOLDIR}/skel/skel*.txz ; do
+    if [ $SKEL != "${LIVE_TOOLDIR}/skel/skel.txz" ]; then
+      tar -xf ${SKEL} -C ${LIVE_ROOTDIR}/etc/skel/
+    fi
+  done
+
 
 fi
 
@@ -2281,6 +2293,8 @@ fi
 # Directory for rootcopy files (everything placed here will be copied
 # verbatim into the overlay root):
 mkdir -p ${LIVE_STAGING}/${LIVEMAIN}/rootcopy
+
+cp -r ${LIVE_TOOLDIR}/rootcopy/* ${LIVE_STAGING}/${LIVEMAIN}/rootcopy
 
 # Create an ISO file from the directories found below ${LIVE_STAGING}:
 create_iso ${LIVE_STAGING}

@@ -10,7 +10,6 @@ fcitx-configtool
 
 ## 上网和一些工具（你懂的）
 firejail
-firefox-hardened
 icecat
 icecat-hardened
 NetworkManager-nonprism

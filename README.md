@@ -13,6 +13,9 @@ Forked from Alien Bob's powerful building script for Slackware Live. Thank you, 
 
 - #1165 & #1366: chmod a bunch of rc files as to disable them starting in booting: e.g. bluetooth,rpc,cups. If NetworkManager is installed, disabling inet1 and wireless as well.
 - #2248: Enabling the addons/ & optional/ directories under XFCE mode (substituted by SLACKWARE)
+- #167~: Remove some serials of Slackware repo in the tagfiles strings of MATE and CINNAMON.
+- ....: Add Chinese (simp, trad, Cantonese) encodings options on the bootup screen.
+- Add my own pkglist: mdrights{.conf,.lst} ——增加了的包的列表在：https://github.com/mdrights/LiveSlak/blob/mdrights/pkglists/mdrights.lst
 
 ## Usage
 
@@ -33,7 +36,7 @@ Forked from Alien Bob's powerful building script for Slackware Live. Thank you, 
 
 
 <hr>
-构建脚本的详细介绍和使用方法请见 Alien的 [README.txt](https://github.com/mdrights/LiveSlak/blob/mdrights/README.txt) 
+构建脚本的详细介绍和使用方法请见 Alien的 [README.txt](https://github.com/mdrights/LiveSlak/blob/mdrights/README.txt)   
 
 
 =========   
