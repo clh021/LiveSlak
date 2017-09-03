@@ -273,8 +273,8 @@ cleanup() {
 
   rmdir ${LIVE_ROOTDIR} 2>${DBGOUT}
   rmdir ${LIVE_WORK}/*_$$ 2>${DBGOUT}
-  rm ${LIVE_MOD_OPT}/* 2>${DBGOUT} || true
-  rm ${LIVE_MOD_ADD}/* 2>${DBGOUT} || true
+  rm -r ${LIVE_MOD_OPT}/ 2>${DBGOUT} || true
+  rm -r ${LIVE_MOD_ADD}/ 2>${DBGOUT} || true
   rm -r ${LIVE_STAGING}/* 2>${DBGOUT} || true
 }
 trap 'echo "*** $0 FAILED at line $LINENO ***"; cleanup; exit 1' ERR INT TERM
@@ -2297,10 +2297,6 @@ fi
 # verbatim into the overlay root):
 mkdir -p ${LIVE_STAGING}/${LIVEMAIN}/rootcopy
 
-# cp -r ${LIVE_TOOLDIR}/rootcopy/* ${LIVE_STAGING}/${LIVEMAIN}/rootcopy # Added by MD
-for FILE in ${LIVE_TOOLDIR}/rootcopy/*.txz ; do
-    tar -xf ${FILE} -C ${LIVE_ROOTDIR}/
-done
 
 # Create an ISO file from the directories found below ${LIVE_STAGING}:
 create_iso ${LIVE_STAGING}
