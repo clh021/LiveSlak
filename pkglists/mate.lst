@@ -1,13 +1,13 @@
 # MSB DEPS:
 docutils
-gksu
+#gksu
 glade
 gssdp
 gtk-engines
 gtksourceview
 gtksourceview3
 gupnp
-libgksu
+#libgksu
 libgtop
 libgxps
 libpeas
@@ -52,7 +52,7 @@ mate-themes
 
 # MSB EXTRA:
 atril
-caja-dropbox
+#caja-dropbox
 caja-extensions
 galculator
 mate-applets

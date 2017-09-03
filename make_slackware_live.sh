@@ -174,17 +174,17 @@ SEQ_XFCEBASE="${MINLIST},xbase,xapbase,xfcebase"
 # - each series will become a squashfs module:
 SEQ_KDE4BASE="pkglist:${MINLIST},xbase,xapbase,kde4base"
 
-# List of Slackware package series with Plasma5 instead of KDE 4 (full install):
+# List of Slackware package series with Plasma5  (full install):
 # - each will become a squashfs module:
 SEQ_PLASMA5="tagfile:a,ap,d,e,f,k,l,n,t,tcl,x,xap,xfce,y pkglist:slackextra,kde4plasma5,plasma5,alien,alienrest,slackpkgplus"
 
-# List of Slackware package series with MSB instead of KDE 4 (not full install, stripped out some serials by MD):
+# List of Slackware package series with MATE  (not full install, stripped out some serials by MD):
 # - each will become a squashfs module:
-SEQ_MSB="tagfile:a,ap,l,n,x,xap pkglist:slackextra,mate,slackpkgplus"
+SEQ_MSB="tagfile:a,ap,d,l,n,x,xap pkglist:slackextra,mate"
 
-# List of Slackware package series with Cinnamon instead of KDE4 (not full install):
+# List of Slackware package series with Cinnamon  (not full install):
 # - each will become a squashfs module:
-SEQ_CIN="tagfile:a,ap,l,n,x,xap pkglist:slackextra,cinnamon,slackpkgplus"
+SEQ_CIN="tagfile:a,ap,d,l,n,x,xap pkglist:slackextra,cinnamon"
 
 # Slackware package series with Gnome3/systemd instead of KDE4 (full install):
 # - each will become a squashfs module:
@@ -1585,10 +1585,14 @@ echo "-- Configuring XFCE."
 # Prepare some XFCE defaults for the 'live' user and any new users.
 # (don't show icons on the desktop for irrelevant stuff).
 # Also, allow other people to add their own custom skel*.txz archives:
-mkdir -p ${LIVE_ROOTDIR}/etc/skel/
-for SKEL in ${LIVE_TOOLDIR}/skel/skel*.txz ; do
-  tar -xf ${SKEL} -C ${LIVE_ROOTDIR}/etc/skel/
-done
+
+if [ "$LIVEDE" = "XFCE" ]; then
+  mkdir -p ${LIVE_ROOTDIR}/etc/skel/
+#    for SKEL in ${LIVE_TOOLDIR}/skel/skel*.txz ; do
+	SKEL="${LIVE_TOOLDIR}/skel/skel-xfce.txz"
+  	tar -xf ${SKEL} -C ${LIVE_ROOTDIR}/etc/skel/
+#    done
+fi
 
 # -------------------------------------------------------------------------- #
 echo "-- Configuring KDE4."
@@ -1818,30 +1822,29 @@ EOT
 
 fi # End LIVEDE = STUDIOWARE  
 
+# -------------------------------------------------------------------------- #
+echo "-- Configuring ${LIVEDE} by calling 'custom_config()'."
+# -------------------------------------------------------------------------- #
+
 # You can define the function 'custom_config()' by uncommenting it in
 # the configuration file 'make_slackware_live.conf'.
 if type custom_config 1>/dev/null 2>/dev/null ; then
-
-  # -------------------------------------------------------------------------- #
-  echo "-- Configuring ${LIVEDE} by calling 'custom_config()'."
-  # -------------------------------------------------------------------------- #
 
   # This is particularly useful if you defined a non-standard "LIVEDE"
   # in 'make_slackware_live.conf', in which case you must specify your custom
   # package sequence in the variable "SEQ_CUSTOM" in that same .conf file.
   custom_config
 
+fi
   # Copied from the XFCE session;
   # Also, allow other people to add their own custom skel*.txz archives:
-  mkdir -p ${LIVE_ROOTDIR}/etc/skel/
-  for SKEL in ${LIVE_TOOLDIR}/skel/skel*.txz ; do
-    if [ $SKEL != "${LIVE_TOOLDIR}/skel/skel.txz" ]; then
-      tar -xf ${SKEL} -C ${LIVE_ROOTDIR}/etc/skel/
-    fi
-  done
+mkdir -p ${LIVE_ROOTDIR}/etc/skel/
+for SKEL in ${LIVE_TOOLDIR}/skel/skel*.txz ; do
+  if [ "$SKEL" != "${LIVE_TOOLDIR}/skel/skel-xfce.txz" ]; then
+    tar -xf ${SKEL} -C ${LIVE_ROOTDIR}/etc/skel/
+  fi
+done
 
-
-fi
 
 # Workaround a bug where our Xkbconfig is not loaded sometimes:
 echo "setxkbmap" > ${LIVE_ROOTDIR}/home/${LIVEUID}/.xprofile
@@ -2294,7 +2297,10 @@ fi
 # verbatim into the overlay root):
 mkdir -p ${LIVE_STAGING}/${LIVEMAIN}/rootcopy
 
-cp -r ${LIVE_TOOLDIR}/rootcopy/* ${LIVE_STAGING}/${LIVEMAIN}/rootcopy
+# cp -r ${LIVE_TOOLDIR}/rootcopy/* ${LIVE_STAGING}/${LIVEMAIN}/rootcopy # Added by MD
+for FILE in ${LIVE_TOOLDIR}/rootcopy/*.txz ; do
+    tar -xf ${FILE} -C ${LIVE_ROOTDIR}/
+done
 
 # Create an ISO file from the directories found below ${LIVE_STAGING}:
 create_iso ${LIVE_STAGING}
