@@ -1163,12 +1163,6 @@ echo "-- Configuring the base system."
 umount ${LIVE_ROOTDIR} 2>${DBGOUT} || true
 mount -t overlay -o lowerdir=${RODIRS},upperdir=${INSTDIR},workdir=${LIVE_OVLDIR} overlay ${LIVE_ROOTDIR}
 
-# Change permissions of rc files so as to control startup services:
-chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.bluetooth
-chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.cups
-chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.cups-browsed
-chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.rpc
-chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.inet2
 
 # Determine the kernel version in the Live OS:
 if [ "$SL_ARCH" = "x86_64" -o "$SMP32" = "NO" ]; then
@@ -1836,7 +1830,9 @@ if type custom_config 1>/dev/null 2>/dev/null ; then
   custom_config
 
 fi
-  # Copied from the XFCE session;
+
+  # ======== Universal Skel Inserting ========
+  # Copied from the XFCE session by MDrights;
   # Also, allow other people to add their own custom skel*.txz archives:
 mkdir -p ${LIVE_ROOTDIR}/etc/skel/
 for SKEL in ${LIVE_TOOLDIR}/skel/skel*.txz ; do
@@ -1889,10 +1885,16 @@ sed -i ${LIVE_ROOTDIR}/etc/inittab -e "s/\(id:\).\(:initdefault:\)/\1${RUNLEVEL}
 [ -f ${LIVE_ROOTDIR}/etc/rc.d/rc.yp ] && chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.yp
 [ -f ${LIVE_ROOTDIR}/etc/rc.d/rc.sshd ] && chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.sshd
 
-# But enable NFS client support and CUPS:
-[ -f ${LIVE_ROOTDIR}/etc/rc.d/rc.rpc ] && chmod +x ${LIVE_ROOTDIR}/etc/rc.d/rc.rpc
-[ -f ${LIVE_ROOTDIR}/etc/rc.d/rc.cups ] && chmod +x ${LIVE_ROOTDIR}/etc/rc.d/rc.cups
-[ -f ${LIVE_ROOTDIR}/etc/rc.d/rc.cups-browsed ] && chmod +x ${LIVE_ROOTDIR}/etc/rc.d/rc.cups-browsed
+# But enable NFS client support and CUPS (DISABLED by MDrights):
+[ -f ${LIVE_ROOTDIR}/etc/rc.d/rc.rpc ] && chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.rpc
+[ -f ${LIVE_ROOTDIR}/etc/rc.d/rc.cups ] && chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.cups
+[ -f ${LIVE_ROOTDIR}/etc/rc.d/rc.cups-browsed ] && chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.cups-browsed
+[ -f ${LIVE_ROOTDIR}/etc/rc.d/rc.bluetooth ] && chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.bluetooth
+[ -f ${LIVE_ROOTDIR}/etc/rc.d/rc.inet2 ] && chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.inet2
+
+# Enable it as I need it:
+[ -f ${LIVE_ROOTDIR}/etc/rc.d/rc.firewall ] && chmod +x ${LIVE_ROOTDIR}/etc/rc.d/rc.firewall
+
 
 # Add a softvol pre-amp to ALSA - some computers have too low volumes.
 # If etc/asound.conf exists it's configuring ALSA to use Pulse,
