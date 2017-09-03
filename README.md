@@ -6,20 +6,14 @@ Forked from Alien Bob's powerful building script for Slackware Live. Thank you, 
 构建我自己的 Live 发行版 （基于 Slackware）。主要侧重：
   - 中文化
   - 隐私加强
-    - 隐私和安全相关的应用
-    - 系统加固（TODO）
+    - 隐私保护和墙国特色信息/通讯自由相关的应用
+    - 系统加固（包括：防火墙、文件系统加固、内核加固等……todo）
 
-## My modification
-
-- #1165 & #1366: chmod a bunch of rc files as to disable them starting in booting: e.g. bluetooth,rpc,cups. If NetworkManager is installed, disabling inet1 and wireless as well.
-- #2248: Enabling the addons/ & optional/ directories under XFCE mode (substituted by SLACKWARE)
-- #167~: Remove some serials of Slackware repo in the tagfiles strings of MATE and CINNAMON.
-- ....: Add Chinese (simp, trad, Cantonese) encodings options on the bootup screen.
-- Add my own pkglist: mdrights{.conf,.lst} ——增加了的包的列表在：https://github.com/mdrights/LiveSlak/blob/mdrights/pkglists/mdrights.lst
 
 ## Usage
 
-如果你是最终用户，请阅读：[LiveSlak 介绍](https://mdrights.github.io/os-observe/posts/2017/08/Liveslak-intro.html)
+- 下载地址：
+- 如果你是最终用户，请阅读：[LiveSlak 介绍](https://mdrights.github.io/os-observe/posts/2017/08/Liveslak-intro.html)
 
 ## Build
 
@@ -34,6 +28,18 @@ Forked from Alien Bob's powerful building script for Slackware Live. Thank you, 
   - `SL_REPO` = 你的本地 Slackware （官方）仓库地址
   - `LIVEDE`  = 给它起个名字吧
 
+## My modification
+
+- #1366 & #1896: chmod a bunch of rc files as to disable them starting in booting: e.g. bluetooth,rpc,cups. If NetworkManager is installed, disabling inet1 and wireless as well.
+- #2248: Enabling the addons/ & optional/ directories under XFCE mode (substituted by SLACKWARE)
+- #167~: Remove some serials of Slackware repo in the tagfiles strings of MATE and CINNAMON.
+- #1295: Add user account for Tor.
+- Custom_config: Add my configuration files (and startup scripts) to the system.
+- ....: Add Chinese (simp, trad, Cantonese) encodings options on the bootup screen.
+- Add my own pkglist: mdrights{.conf,.lst} 
+    - 增加了的包绝大多数为自己编译，列表在：https://github.com/mdrights/LiveSlak/blob/mdrights/pkglists/mdrights.lst
+    - 您有何提议可以发issue告诉我喔～
+    - 如果希望在线获得这些软件包，我可以考虑在线共享。
 
 <hr>
 构建脚本的详细介绍和使用方法请见 Alien的 [README.txt](https://github.com/mdrights/LiveSlak/blob/mdrights/README.txt)   
