@@ -13,6 +13,9 @@ Forked from Alien Bob's powerful building script for Slackware Live. Thank you, 
 ## Usage
 
 - 下载地址：
+  - Xfce（轻量版）https://mdrights.blaucloud.de/index.php/s/Nfkp9b3ROPbx9Nc
+  - MATE版：https://drive.google.com/open?id=0BzDyGoE5b5SdcDREem15dVFONUE
+
 - 如果你是最终用户，请阅读：[LiveSlak 介绍](https://mdrights.github.io/os-observe/posts/2017/08/Liveslak-intro.html)
 
 ## Build
