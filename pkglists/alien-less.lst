@@ -1,7 +1,7 @@
 # Showcases for using with Slackware Live:
 NetworkManager-openconnect
 NetworkManager-openvpn
-calibre
+#calibre
 #chromium
 #chromium-pepperflash-plugin
 #chromium-widevine-plugin
@@ -15,12 +15,12 @@ gst-plugins-ffmpeg0
 gst-plugins-libav
 keepassx
 #libreoffice
-libreoffice-dict-en
+#libreoffice-dict-en
 libstatgrab
 #libtinfo
 #nodejs
 openconnect
-openjdk
+#openjdk
 #oxygen-gtk2
 p7zip
 #palemoon
