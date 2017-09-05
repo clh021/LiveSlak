@@ -47,6 +47,7 @@ Forked from Alien Bob's powerful building script for Slackware Live. Thank you, 
 <hr>
 构建脚本的详细介绍和使用方法请见 Alien的 [README.txt](https://github.com/mdrights/LiveSlak/blob/mdrights/README.txt)   
 
+**交流反饋**：這裏發issue，或 IRC/Riot 頻道：#digitalrightscn
 
 =========   
 Copyright 2014 - 2017 Eric Hameleers, Eindhoven, NL  
