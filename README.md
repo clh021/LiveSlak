@@ -14,7 +14,7 @@ Forked from Alien Bob's powerful building script for Slackware Live. Thank you, 
 
 - 下载地址 ：
   - Xfce (0905)（轻量版）https://mdrights.blaucloud.de/index.php/s/03oc1NgbKoI9RCR  (md5sum: 9fd019ecf8ccd122821a2575fe3d8419)
-  - MATE (0904 -bugged)：   (md5sum: 51192449823679ecbe9427709b2a4795)
+  - MATE (0904 -to be uploaded)：   (md5sum: 51192449823679ecbe9427709b2a4795)
 
 - 如果你是最终用户，请阅读：[LiveSlak 介绍](https://mdrights.github.io/os-observe/posts/2017/08/Liveslak-intro.html)
 
@@ -55,6 +55,7 @@ Forked from Alien Bob's powerful building script for Slackware Live. Thank you, 
 
 - Firefox and Icecat user config files (user.js, extensions.ini) are not able to install to user's directory, since the FF/Icecat user `.mozilla` directory has not been made until FF/icecat first start; and the profile directory inside `.mozilla` is a random number. However this does not affect FF's extension installation (but icecat will).
 - It seems xdm cannot start DE while Iptables autostart during the boot.
+
 
 ## Acknowledgement
 
