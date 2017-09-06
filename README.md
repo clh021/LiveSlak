@@ -37,7 +37,9 @@ Forked from Alien Bob's powerful building script for Slackware Live. Thank you, 
 - #2248: Enabling the addons/ & optional/ directories under XFCE mode (substituted by SLACKWARE)
 - #167~: Remove some serials of Slackware repo in the tagfiles strings of MATE and CINNAMON.
 - #1295: Add user account for Tor.
-- Custom_config: Add my configuration files (and startup scripts) to the system.
+- Custom_config: Add my configuration files to the system, which can be put under such paradigm:
+  - skel/skel*.txz : any files except skel-xfce.txz in it will be put to $HOME under **every desktopType except XFCE** which only parse skel-xfce.txz;
+  - rootcopy/ : now we can have **etc*.txz** & **opt*.txz** that can be parsed to /etc and /opt respectively.
 - ....: Add Chinese (simp, trad, Cantonese) encodings options on the bootup screen.
 - Add my own pkglist: mdrights{.conf,.lst} 
     - 增加了的包绝大多数为自己编译，列表在：https://github.com/mdrights/LiveSlak/blob/mdrights/pkglists/mdrights.lst
