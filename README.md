@@ -13,8 +13,8 @@ Forked from Alien Bob's powerful building script for Slackware Live. Thank you, 
 ## Usage
 
 - 下载地址 ：
-  - Xfce(0905)（轻量版）https://mdrights.blaucloud.de/index.php/s/03oc1NgbKoI9RCR  (md5sum: 9fd019ecf8ccd122821a2575fe3d8419)
-  - MATE(0904)：https://drive.google.com/open?id=0BzDyGoE5b5SdbHpHT3FhMlllOUU   (md5sum: 51192449823679ecbe9427709b2a4795)
+  - Xfce (0905)（轻量版）https://mdrights.blaucloud.de/index.php/s/03oc1NgbKoI9RCR  (md5sum: 9fd019ecf8ccd122821a2575fe3d8419)
+  - MATE (0904 -bugged)：   (md5sum: 51192449823679ecbe9427709b2a4795)
 
 - 如果你是最终用户，请阅读：[LiveSlak 介绍](https://mdrights.github.io/os-observe/posts/2017/08/Liveslak-intro.html)
 
@@ -43,6 +43,22 @@ Forked from Alien Bob's powerful building script for Slackware Live. Thank you, 
     - 增加了的包绝大多数为自己编译，列表在：https://github.com/mdrights/LiveSlak/blob/mdrights/pkglists/mdrights.lst
     - 您有何提议可以发issue告诉我喔～
     - 如果希望在线获得这些软件包，我可以考虑在线共享。
+
+## Change Log
+
+- 2017.09.05	Discard firewall startup script; All things work now!
+- 2017.09.04	First beta point release: firewall startup added to rc.local/rc.local_shutdown (but found conflicted with xdm)
+- 2017.09.03	First beta release:	Tor user account added; Firewall rc script added; ShadowsockR added in /opt.
+- 2017.08.27	First beta pre-release: basic feature done (but Tor un-functionable)
+
+## TODO
+
+- Firefox and Icecat user config files (user.js, extensions.ini) are not able to install to user's directory, since the FF/Icecat user `.mozilla` directory has not been made until FF/icecat first start; and the profile directory inside `.mozilla` is a random number. However this does not affect FF's extension installation (but icecat will).
+- It seems xdm cannot start DE while Iptables autostart during the boot.
+
+## Acknowledgement
+
+- Thanks a million for Aeron Nexus (on Telegram) for tireless testing :)
 
 <hr>
 构建脚本的详细介绍和使用方法请见 Alien的 [README.txt](https://github.com/mdrights/LiveSlak/blob/mdrights/README.txt)   
