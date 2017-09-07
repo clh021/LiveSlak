@@ -1588,6 +1588,7 @@ if [ "$LIVEDE" = "XFCE" ]; then
 #    done
 fi
 
+if [ "$LIVEDE" = "KDE4" ]; then
 # -------------------------------------------------------------------------- #
 echo "-- Configuring KDE4."
 # -------------------------------------------------------------------------- #
@@ -1618,19 +1619,6 @@ cat <<EOT > ${LIVE_ROOTDIR}/var/lib/kdm/kdmsts
 EOT
 chmod 600 ${LIVE_ROOTDIR}/var/lib/kdm/kdmsts
 
-# Set default GTK+ theme for Qt applications:
-mkdir -p  ${LIVE_ROOTDIR}/etc/skel/
-cat << EOF > ${LIVE_ROOTDIR}/etc/skel/.gtkrc-2.0
-include "/usr/share/themes/Adwaita/gtk-2.0/gtkrc"
-include "/usr/share/gtk-2.0/gtkrc"
-include "/etc/gtk-2.0/gtkrc"
-gtk-theme-name="Adwaita"
-EOF
-mkdir -p ${LIVE_ROOTDIR}/etc/skel/.config/gtk-3.0
-cat << EOF > ${LIVE_ROOTDIR}/etc/skel/.config/gtk-3.0/settings.ini
-[Settings]
-gtk-theme-name = Adwaita
-EOF
 
 # Be gentle to low-performance USB media and limit disk I/O:
 mkdir -p  ${LIVE_ROOTDIR}/etc/skel/.kde/share/config
@@ -1674,6 +1662,22 @@ cat <<EOT >> ${LIVE_ROOTDIR}/etc/skel/.config/konsolerc
 DefaultProfile=Shell.profile
 
 EOT
+
+fi  # Finish configuring KDE4. (mod by MDrights)
+
+# Set default GTK+ theme for Qt applications: 		# These three sections were moved out of the KDE4 setting.
+mkdir -p  ${LIVE_ROOTDIR}/etc/skel/
+cat << EOF > ${LIVE_ROOTDIR}/etc/skel/.gtkrc-2.0
+include "/usr/share/themes/Adwaita/gtk-2.0/gtkrc"
+include "/usr/share/gtk-2.0/gtkrc"
+include "/etc/gtk-2.0/gtkrc"
+gtk-theme-name="Adwaita"
+EOF
+mkdir -p ${LIVE_ROOTDIR}/etc/skel/.config/gtk-3.0
+cat << EOF > ${LIVE_ROOTDIR}/etc/skel/.config/gtk-3.0/settings.ini
+[Settings]
+gtk-theme-name = Adwaita
+EOF
 
 # Configure (default) UTC timezone so we can change it during boot:
 mkdir -p ${LIVE_ROOTDIR}/etc/skel/.kde/share/config

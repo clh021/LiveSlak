@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Tor Hardened
+Comment[zh_CN]=加强版Tor网络
+Exec=/opt/tor-hardened-scripts/tor-hardened.sh
+Icon=tor-browser
+Type=Application
+Categories=Network
+Terminal=True
+
