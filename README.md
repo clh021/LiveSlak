@@ -9,12 +9,13 @@ Forked from Alien Bob's powerful building script for Slackware Live. Thank you, 
     - 隐私保护和墙国特色信息/通讯自由相关的应用
     - 系统加固（包括：防火墙、文件系统加固、内核加固等……todo）
 
-
-## Usage
+## Download
 
 - 下载地址 ：
   - Xfce (0905)（轻量版）https://mdrights.blaucloud.de/index.php/s/03oc1NgbKoI9RCR  (md5sum: 9fd019ecf8ccd122821a2575fe3d8419)
-  - MATE (0904 -to be uploaded)：   (md5sum: 51192449823679ecbe9427709b2a4795)
+  - MATE ( -待上传)
+
+## Usage
 
 - 如果你是最终用户，请阅读：[LiveSlak 介绍](https://mdrights.github.io/os-observe/posts/2017/08/Liveslak-intro.html)
 
@@ -48,6 +49,7 @@ Forked from Alien Bob's powerful building script for Slackware Live. Thank you, 
 
 ## Change Log
 
+- 2017.09.06	添加了两个桌面快捷方式：防火墙和无线网络连接。
 - 2017.09.05	Discard firewall startup script; All things work now!
 - 2017.09.04	First beta point release: firewall startup added to rc.local/rc.local_shutdown (but found conflicted with xdm)
 - 2017.09.03	First beta release:	Tor user account added; Firewall rc script added; ShadowsockR added in /opt.
@@ -66,7 +68,7 @@ Forked from Alien Bob's powerful building script for Slackware Live. Thank you, 
 <hr>
 构建脚本的详细介绍和使用方法请见 Alien的 [README.txt](https://github.com/mdrights/LiveSlak/blob/mdrights/README.txt)   
 
-**交流反饋**：這裏發issue，或 IRC/Riot 頻道：#digitalrightscn
+**交流反饋**：這裏發issue，或 IRC/Riot 頻道：#digitalrightscn ; 或 TG: https://t.me/slackware_unix   
 
 =========   
 Copyright 2014 - 2017 Eric Hameleers, Eindhoven, NL  
