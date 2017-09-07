@@ -43,5 +43,5 @@ libreoffice
 ## Grab from others' repo (and lacking deps under XFCE minimal installation)
 veracrypt
 #libgpod
-#libwebp
+libwebp
 #gnome-mplayer

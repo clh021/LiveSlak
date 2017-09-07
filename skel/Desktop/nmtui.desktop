@@ -5,5 +5,5 @@ Exec=nmtui-connect
 Icon=wpa_gui
 Type=Application
 Categories=Network
-Terminal=True
+Terminal=true
 

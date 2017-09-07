@@ -5,5 +5,5 @@ Exec=/opt/tor-hardened-scripts/tor-hardened.sh
 Icon=tor-browser
 Type=Application
 Categories=Network
-Terminal=True
+Terminal=true
 

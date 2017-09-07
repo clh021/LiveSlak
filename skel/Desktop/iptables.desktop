@@ -5,4 +5,4 @@ Exec=su -c '/etc/rc.d/rc.firewall start'
 Icon=utilities-system-monitor
 Type=Application
 Categories=System
-Terminal=True
+Terminal=true
