@@ -1,7 +1,7 @@
 # Showcases for using with Slackware Live:
 NetworkManager-openconnect
 NetworkManager-openvpn
-calibre
+#calibre
 #chromium
 #chromium-pepperflash-plugin
 #chromium-widevine-plugin
