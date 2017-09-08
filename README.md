@@ -12,12 +12,14 @@ Forked from Alien Bob's powerful building script for Slackware Live. Thank you, 
 ## Download
 
 - 下载地址 （会因更新而变动）：
-  - Xfce (0905)（轻量版）https://mdrights.blaucloud.de/index.php/s/03oc1NgbKoI9RCR  (md5sum: 9fd019ecf8ccd122821a2575fe3d8419)
-  - MATE ( -待上传)
+  - https://mdrights.blaucloud.de/index.php/s/03oc1NgbKoI9RCR    
+  - 包含：
+    - Xfce （轻量版；待上传）
+    - MATE ( -待上传)
 
 ## Usage
 
-- 如果你是最终用户，请阅读：[LiveSlak 介绍](https://mdrights.github.io/os-observe/posts/2017/08/Liveslak-intro.html)
+- 如果你是最终用户，请阅读：[LiveSlak 最终用户介绍](https://mdrights.github.io/os-observe/posts/2017/08/Liveslak-intro.html)
 
 ## Build
 
@@ -38,9 +40,10 @@ Forked from Alien Bob's powerful building script for Slackware Live. Thank you, 
 - #2248: Enabling the addons/ & optional/ directories under XFCE mode (substituted by SLACKWARE)
 - #167~: Remove some serials of Slackware repo in the tagfiles strings of MATE and CINNAMON.
 - #1295: Add user account for Tor.
+- #1591: Disable most of the KDE4 configuration (for X system) when not building for KDE4 type.
 - Custom_config: Add my configuration files to the system, which can be put under such paradigm:
   - skel/skel*.txz : any files except skel-xfce.txz in it will be put to $HOME under **every desktopType except XFCE** which only parse skel-xfce.txz;
-  - rootcopy/ : now we can have **etc*.txz** & **opt*.txz** that can be parsed to /etc and /opt respectively.
+  - rootcopy/ : now we can have **etc-x.txz** & **opt-x.txz** that can be parsed to /etc and /opt respectively.
 - ....: Add Chinese (simp, trad, Cantonese) encodings options on the bootup screen.
 - Add my own pkglist: mdrights{.conf,.lst} 
     - 增加了的包绝大多数为自己编译，列表在：https://github.com/mdrights/LiveSlak/blob/mdrights/pkglists/mdrights.lst
@@ -60,6 +63,7 @@ Forked from Alien Bob's powerful building script for Slackware Live. Thank you, 
 
 - Firefox and Icecat user config files (user.js, extensions.ini) are not able to install to user's directory, since the FF/Icecat user `.mozilla` directory has not been made until FF/icecat first start; and the profile directory inside `.mozilla` is a random number. However this does not affect FF's extension installation (but icecat will).
 - It seems xdm cannot start DE while Iptables autostart during the boot.
+- It seems that the UEFI grub won't show menu when it is initiated, with only the `boot:` prompt. Nothing has been found to figure this out yet (neither not the problem of grub fonts, nor the problem of the minimal installation under XFCE...)
 
 
 ## Acknowledgement
