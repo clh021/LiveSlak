@@ -1,0 +1,83 @@
+<h1 id="liveslak">LiveSlak</h1>
+<p>Forked from Alien Bob's powerful building script for Slackware Live. Thank you, Alien !<br />
+本套脚本 forked 自 <a href="http://www.slackware.com/%7Ealien/liveslak/">Alien Bob 大牛</a>, <a href="git://bear.alienbase.nl/liveslak.git" class="uri">git://bear.alienbase.nl/liveslak.git</a></p>
+<p>构建我自己的 Live 发行版 （基于 Slackware）。主要侧重：</p>
+<ul>
+<li>中文化</li>
+<li>隐私加强
+<ul>
+<li>隐私保护和墙国特色信息/通讯自由相关的应用</li>
+<li>系统加固（包括：防火墙、文件系统加固、内核加固等……todo）</li>
+</ul></li>
+</ul>
+<h2 id="download">Download</h2>
+<ul>
+<li>下载地址 （会因更新而变动）：</li>
+<li><a href="https://mdrights.blaucloud.de/index.php/s/03oc1NgbKoI9RCR" class="uri">https://mdrights.blaucloud.de/index.php/s/03oc1NgbKoI9RCR</a><br />
+</li>
+<li>包含：
+<ul>
+<li>Xfce （轻量版；待上传）</li>
+<li>MATE ( 0908)</li>
+</ul></li>
+</ul>
+<h2 id="usage">Usage</h2>
+<ul>
+<li>如果你是最终用户，请阅读：<a href="https://mdrights.github.io/os-observe/posts/2017/08/Liveslak-intro.html">LiveSlak 最终用户介绍</a></li>
+</ul>
+<h2 id="build">Build</h2>
+<p><strong>如果你也想自己制作 LiveSlak 系统</strong></p>
+<p>请构建时导入这里的脚本构建的安装包：<a href="https://github.com/mdrights/Slackbuilds-nonprism">Slackbuilds-nonprism</a> ，请先下载该 repo 并构建每个软件包，放置于同一个目录下（比如 $HOME/slackwareCN），LiveSlak 构建时会导入这些软件包。</p>
+<pre><code>为了达到这个目的，请自行创建（或修改）本repo里的 xxx.conf &amp; xxx.lst 配置文件（也可以用我的：mdrights{.conf, .lst}）   
+其中 `SL_REPO` 变量要指向放置你的软件包的目录（比如 $HOME/slackwareCN）</code></pre>
+<p>其他修改/自定义的地方就是：<code>make_slackware_live.conf</code></p>
+<ul>
+<li><code>SL_REPO</code> = 你的本地 Slackware （官方）仓库地址</li>
+<li><code>LIVEDE</code> = 给它起个名字吧</li>
+</ul>
+<h2 id="my-modification">My modification</h2>
+<ul>
+<li><h1 id="chmod-a-bunch-of-rc-files-as-to-disable-them-starting-in-booting-e.g.-bluetoothrpccups.-if-networkmanager-is-installed-disabling-inet1-and-wireless-as-well.">1366 &amp; #1896: chmod a bunch of rc files as to disable them starting in booting: e.g. bluetooth,rpc,cups. If NetworkManager is installed, disabling inet1 and wireless as well.</h1></li>
+<li><h1 id="enabling-the-addons-optional-directories-under-xfce-mode-substituted-by-slackware">2248: Enabling the addons/ &amp; optional/ directories under XFCE mode (substituted by SLACKWARE)</h1></li>
+<li><h1 id="remove-some-serials-of-slackware-repo-in-the-tagfiles-strings-of-mate-and-cinnamon.">167~: Remove some serials of Slackware repo in the tagfiles strings of MATE and CINNAMON.</h1></li>
+<li><h1 id="add-user-account-for-tor.">1295: Add user account for Tor.</h1></li>
+<li><h1 id="disable-most-of-the-kde4-configuration-for-x-system-when-not-building-for-kde4-type.">1591: Disable most of the KDE4 configuration (for X system) when not building for KDE4 type.</h1></li>
+<li>Custom_config: Add my configuration files to the system, which can be put under such paradigm:</li>
+<li>skel/skel*.txz : any files except skel-xfce.txz in it will be put to $HOME under <strong>every desktopType except XFCE</strong> which only parse skel-xfce.txz;</li>
+<li>rootcopy/ : now we can have <strong>etc-x.txz</strong> &amp; <strong>opt-x.txz</strong> that can be parsed to /etc and /opt respectively.</li>
+<li>....: Add Chinese (simp, trad, Cantonese) encodings options on the bootup screen.</li>
+<li>Add my own pkglist: mdrights{.conf,.lst}
+<ul>
+<li>增加了的包绝大多数为自己编译，列表在：<a href="https://github.com/mdrights/LiveSlak/blob/mdrights/pkglists/mdrights.lst" class="uri">https://github.com/mdrights/LiveSlak/blob/mdrights/pkglists/mdrights.lst</a></li>
+<li>您有何提议可以发issue告诉我喔～</li>
+<li>如果希望在线获得这些软件包，我可以考虑在线共享。</li>
+</ul></li>
+</ul>
+<h2 id="change-log">Change Log</h2>
+<ul>
+<li>2017.09.07 去掉了一些不必要的配置文件；修正桌面快捷方式的错误并添加了一个；在XFCE版作为超级轻量版舍去一些因缺少依赖而无法运行的包（可待在MATE版提供）。</li>
+<li>2017.09.06 添加了两个桌面快捷方式：防火墙和无线网络连接。</li>
+<li>2017.09.05 Discard firewall startup script; All things work now!</li>
+<li>2017.09.04 First beta point release: firewall startup added to rc.local/rc.local_shutdown (but found conflicted with xdm)</li>
+<li>2017.09.03 First beta release: Tor user account added; Firewall rc script added; ShadowsockR added in /opt.</li>
+<li>2017.08.27 First beta pre-release: basic feature done (but Tor un-functionable)</li>
+</ul>
+<h2 id="todo">TODO</h2>
+<ul>
+<li>Firefox and Icecat user config files (user.js, extensions.ini) are not able to install to user's directory, since the FF/Icecat user <code>.mozilla</code> directory has not been made until FF/icecat first start; and the profile directory inside <code>.mozilla</code> is a random number. However this does not affect FF's extension installation (but icecat will).</li>
+<li>It seems xdm cannot start DE while Iptables autostart during the boot.</li>
+<li>It seems that the UEFI grub won't show menu when it is initiated, with only the <code>boot:</code> prompt. Nothing has been found to figure this out yet (neither not the problem of grub fonts, nor the problem of the minimal installation under XFCE...)</li>
+</ul>
+<h2 id="acknowledgement">Acknowledgement</h2>
+<ul>
+<li>Thanks a million for Aeron Nexus (on Telegram) for tireless testing :)</li>
+</ul>
+<hr>
+<p>构建脚本的详细介绍和使用方法请见 Alien的 <a href="https://github.com/mdrights/LiveSlak/blob/mdrights/README.txt">README.txt</a></p>
+<p><strong>交流反饋</strong>：這裏發issue，或 IRC/Riot 頻道：#digitalrightscn ; 或 TG: <a href="https://t.me/slackware_unix" class="uri">https://t.me/slackware_unix</a></p>
+<p>=========<br />
+Copyright 2014 - 2017 Eric Hameleers, Eindhoven, NL<br />
+Copyright 2017 MDrights (mdrights at tutanota dot de)<br />
+All rights reserved</p>
+<p>只要本版权声明和许可声明出现在所有版本的本软件中，本软件即可被允许以任何目的（有偿或无偿地）使用、复制、修改和分发。</p>
+<p>=========</p>
