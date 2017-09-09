@@ -516,10 +516,10 @@ function gen_bootmenu() {
   rm -f ${MENUROOTDIR}/kbd.cfg
   rm -f ${MENUROOTDIR}/lang*.cfg
 
-  # Generate main (US) vesamenu.cfg:
+  # Generate main (Simp. Chinese) vesamenu.cfg:  # Modified by MDrights
   cat ${LIVE_TOOLDIR}/menu.tpl | sed \
-    -e "s/@KBD@/us/g" \
-    -e "s/@LANG@/us/g" \
+    -e "s/@KBD@/zh_CN/g" \
+    -e "s/@LANG@/zh_CN/g" \
     -e "s/@CONSFONT@/$CONSFONT/g" \
     -e "s/@DIRSUFFIX@/$DIRSUFFIX/g" \
     -e "s/@DISTRO@/$DISTRO/g" \

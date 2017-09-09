@@ -1,7 +1,8 @@
 # Showcases for using with Slackware Live:
+## Only install on MATE or so (not XFCE).
 NetworkManager-openconnect
 NetworkManager-openvpn
-#calibre
+calibre
 #chromium
 #chromium-pepperflash-plugin
 #chromium-widevine-plugin
@@ -10,11 +11,11 @@ ffmpeg
 #freerdp
 #gcc5
 #gecko-mediaplayer
-#gnome-mplayer
+gnome-mplayer 
 gst-plugins-ffmpeg0
 gst-plugins-libav
-keepassx
-#libreoffice
+#keepassx  (don't install since I make my own)
+#libreoffice (the same)
 #libreoffice-dict-en
 libstatgrab
 #libtinfo

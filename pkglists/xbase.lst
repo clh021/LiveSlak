@@ -106,7 +106,7 @@ gtkspell
 gvfs
 harfbuzz
 hicolor-icon-theme
-hplip
+#hplip
 hunspell
 iceauth
 ico
@@ -308,7 +308,7 @@ udisks2
 upower
 usb_modeswitch
 util-macros
-v4l-utils
+#v4l-utils
 vbetool
 videoproto
 viewres

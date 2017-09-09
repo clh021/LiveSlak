@@ -29,19 +29,30 @@ pcre2
 libev
 shadowsocks-libev
 telegram
+
+# Supplement some libs:
 gmtk
+libwebp
 
 ## 支持中文的终端
-rxvt-unicode
+#rxvt-unicode
 
-## 字体（太大了暂放入）
+## 字体（太大了暂不放入）
 #noto-cjk-font-ttf
 
-## Write words/charts
+## 写写字
 libreoffice
+libpaper
+Ted
+docx2txt
 
-## Grab from others' repo (and lacking deps under XFCE minimal installation)
+# 保护菊花系列 -Protect Your Data Goodies:
+testdisk
+wipe
+secure-delete
+
+#(Only install them on MATE; lacking deps under XFCE minimal installation)
+#keepassx  # 密码管理器（只有MATE版）
+
+## 从其他仓库拽过来的 -Grab from others' repo 
 veracrypt
-#libgpod
-libwebp
-#gnome-mplayer

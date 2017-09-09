@@ -50,6 +50,14 @@ label live
     if you have a recent NVIDIA card.
   endtext
 
+menu begin kbd
+  menu title Non-US Keyboard selection
+  label Previous
+  menu label Previous Menu
+  menu exit
+  menu separator
+  menu include menu/kbd.cfg
+menu end
 
 menu begin language
   menu title Non-US Language selection
