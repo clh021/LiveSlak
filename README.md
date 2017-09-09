@@ -1,6 +1,7 @@
 # LiveSlak
-Forked from Alien Bob's powerful building script for Slackware Live. Thank you, Alien !    
-本套脚本 forked 自 [Alien Bob 大牛](http://www.slackware.com/%7Ealien/liveslak/), git://bear.alienbase.nl/liveslak.git
+
+> Forked from Alien Bob's powerful building script for Slackware Live. Thank you, Alien !    
+> 本套脚本 forked 自 [Alien Bob 大牛](http://www.slackware.com/%7Ealien/liveslak/), git://bear.alienbase.nl/liveslak.git
 
 
 构建我自己的 Live 发行版 （基于 Slackware）。主要侧重：
@@ -14,12 +15,12 @@ Forked from Alien Bob's powerful building script for Slackware Live. Thank you, 
 - 下载地址 （会因更新而变动）：
   - https://mdrights.blaucloud.de/index.php/s/03oc1NgbKoI9RCR    
   - 包含：
-    - Xfce （0909; 超级简洁版）
+    - Xfce （0909; 最小安装版）
     - MATE ( 0908)
 
 ## Usage
 
-- 如果你是最终用户，请阅读：[LiveSlak 最终用户介绍](https://mdrights.github.io/os-observe/posts/2017/08/Liveslak-intro.html)
+- 如果你是**最终用户**，请阅读：[LiveSlak 最终用户介绍](https://mdrights.github.io/os-observe/posts/2017/08/Liveslak-intro.html)
 
 ## Build
 
@@ -36,6 +37,7 @@ Forked from Alien Bob's powerful building script for Slackware Live. Thank you, 
 
 ## My modification
 
+- #519: Change the default locale in the first option on the syslinux boot menu, to zh; and delete the option/submenus for non-US keyboard.
 - #1366 & #1896: chmod a bunch of rc files as to disable them starting in booting: e.g. bluetooth,rpc,cups. If NetworkManager is installed, disabling inet1 and wireless as well.
 - #2248: Enabling the addons/ & optional/ directories under XFCE mode (substituted by SLACKWARE)
 - #167~: Remove some serials of Slackware repo in the tagfiles strings of MATE and CINNAMON.
@@ -52,6 +54,7 @@ Forked from Alien Bob's powerful building script for Slackware Live. Thank you, 
 
 ## Change Log
 
+- 2017.09.09	增加了一些与数据保护相关的工具： `wipe`, `secure-delete`, `testdisk`; 增加了文本编辑器：`Ted`, `docx2txt`。
 - 2017.09.07	去掉了一些不必要的配置文件；修正桌面快捷方式的错误并添加了一个；在XFCE版作为超级轻量版舍去一些因缺少依赖而无法运行的包（可待在MATE版提供）。
 - 2017.09.06	添加了两个桌面快捷方式：防火墙和无线网络连接。
 - 2017.09.05	Discard firewall startup script; All things work now!
