@@ -14,7 +14,7 @@ Forked from Alien Bob's powerful building script for Slackware Live. Thank you, 
 - 下载地址 （会因更新而变动）：
   - https://mdrights.blaucloud.de/index.php/s/03oc1NgbKoI9RCR    
   - 包含：
-    - Xfce （轻量版；待上传）
+    - Xfce （0909; 超级简洁版）
     - MATE ( 0908)
 
 ## Usage
