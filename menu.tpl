@@ -43,7 +43,7 @@ label live
   menu label Start @LIVEDE@ Live
   menu default
   kernel /boot/generic
-  append initrd=/boot/initrd.img @KAPPEND@ load_ramdisk=1 prompt_ramdisk=0 rw printk.time=0 kbd=@KBD@
+  append initrd=/boot/initrd.img @KAPPEND@ load_ramdisk=1 prompt_ramdisk=0 rw printk.time=0 kbd=@KBD@ locale=zh_CN.utf8
   text help
     @CDISTRO@@DIRSUFFIX@-@SL_VERSION@, kernel @KVER@.
     Add 'load=nvidia' to the commandline
@@ -52,7 +52,7 @@ label live
 
 
 menu begin language
-  menu title Non-US Language selection
+  menu title Other Language selection
   label Previous
   menu label Previous Menu
   menu exit

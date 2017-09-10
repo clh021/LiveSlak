@@ -516,10 +516,10 @@ function gen_bootmenu() {
   rm -f ${MENUROOTDIR}/kbd.cfg
   rm -f ${MENUROOTDIR}/lang*.cfg
 
-  # Generate main (Simp. Chinese) vesamenu.cfg:  # Modified by MDrights
+  # Generate main (us) vesamenu.cfg:  # MDrights modified the locale parameter in the default block of menu.tpl.
   cat ${LIVE_TOOLDIR}/menu.tpl | sed \
-    -e "s/@KBD@/zh_CN/g" \
-    -e "s/@LANG@/zh_CN/g" \
+    -e "s/@KBD@/us/g" \
+    -e "s/@LANG@/us/g" \
     -e "s/@CONSFONT@/$CONSFONT/g" \
     -e "s/@DIRSUFFIX@/$DIRSUFFIX/g" \
     -e "s/@DISTRO@/$DISTRO/g" \
@@ -538,6 +538,7 @@ function gen_bootmenu() {
   do
     LANDSC=$(cat ${LIVE_TOOLDIR}/languages |grep "^$LANCOD:" |cut -d: -f2)
     KBD=$(cat ${LIVE_TOOLDIR}/languages |grep "^$LANCOD:" |cut -d: -f3)
+
     # First, create keytab files if they are missing:
     if [ ! -f ${MENUROOTDIR}/${KBD}.ktl ]; then
       keytab-lilo $(find /usr/share/kbd/keymaps/i386 -name "us.map.gz") $(find /usr/share/kbd/keymaps/i386 -name "${KBD}.map.gz") > ${MENUROOTDIR}/${KBD}.ktl
