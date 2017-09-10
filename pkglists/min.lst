@@ -74,6 +74,7 @@ libksba
 libmpc
 libtermcap
 libunistring
+libwebp
 #lilo
 links
 logrotate
@@ -94,6 +95,7 @@ netkit-ftp
 netkit-routed
 network-scripts
 npth
+ntfs-3g
 openldap-client
 openssh
 openssl

@@ -1,5 +1,9 @@
 # Self-added app list. Feel free to add your favourite apps!
 
+# Supplement some libs:
+gmtk
+libpaper
+
 ## 输入法
 libxkbcommon
 extra-cmake-modules
@@ -30,9 +34,6 @@ libev
 shadowsocks-libev
 telegram
 
-# Supplement some libs:
-gmtk
-libwebp
 
 ## 支持中文的终端
 #rxvt-unicode
@@ -42,7 +43,6 @@ libwebp
 
 ## 写写字
 libreoffice
-libpaper
 Ted
 docx2txt
 
