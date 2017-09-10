@@ -12,11 +12,15 @@
 
 ## Download
 
-- 下载地址 （会因更新而变动）：
+- 下载地址 _（可能会因更新而变动）_：
   - https://mdrights.blaucloud.de/index.php/s/03oc1NgbKoI9RCR    
   - 包含：
-    - Xfce （0909; 最小安装版）
-    - MATE ( 0908)
+    - Xfce 版（0910; 最小安装版）
+    - MATE 版 ( 0908)
+
+_最后更新：2017.09.10 16：10_    
+
+<hr>
 
 ## Usage
 
