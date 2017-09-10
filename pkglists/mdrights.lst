@@ -58,5 +58,5 @@ secure-delete
 veracrypt
 
 # For Qemu VM:
-spice-protocol
-xf86-video-qxl
+#spice-protocol
+#xf86-video-qxl
