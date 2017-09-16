@@ -1,7 +1,9 @@
 [Desktop Entry]
-Name=Tor Hardened
+Name=Tor 高级模式
 Comment[zh_CN]=加强版Tor网络
-Exec=/opt/tor-hardened-scripts/tor-hardened.sh
+Comment[zh_TW]=加强版Tor网络
+Comment[zh_HK]=加强版Tor网络
+Exec=su -c /opt/tor-hardened/tor-hardened.sh
 Icon=tor-browser
 Type=Application
 Categories=Network

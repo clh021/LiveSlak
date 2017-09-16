@@ -33,7 +33,7 @@ pcre2
 libev
 shadowsocks-libev
 telegram
-
+jitsi
 
 ## 支持中文的终端
 #rxvt-unicode
@@ -56,6 +56,7 @@ secure-delete
 
 ## 从其他仓库拽过来的 -Grab from others' repo 
 veracrypt
+virtualbox-kernel-addons
 
 # For Qemu VM:
 #spice-protocol
