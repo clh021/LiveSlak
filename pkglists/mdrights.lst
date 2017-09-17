@@ -33,10 +33,9 @@ pcre2
 libev
 shadowsocks-libev
 telegram
-jitsi
 
-## 支持中文的终端
-#rxvt-unicode
+## 支持中文的终端 (useful for cinnamon)
+rxvt-unicode
 
 ## 字体（太大了暂不放入）
 #noto-cjk-font-ttf
@@ -51,8 +50,9 @@ testdisk
 wipe
 secure-delete
 
-#(Only install them on MATE; lacking deps under XFCE minimal installation)
-#keepassx  # 密码管理器（只有MATE版）
+# 这些只提供在cinnamon版里（因为需要的依赖包比较大/多）
+keepassx 
+jitsi
 
 ## 从其他仓库拽过来的 -Grab from others' repo 
 veracrypt

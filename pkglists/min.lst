@@ -71,6 +71,7 @@ libgpg-error
 libgudev
 libidn2
 libksba
+libmnl
 libmpc
 libtermcap
 libunistring
