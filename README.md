@@ -14,10 +14,13 @@ _最后更新：2017.09.17 15:30_
 ## Download
 
 - 下载地址 _（可能会因更新而变动）_：
-  - https://mdrights.blaucloud.de/index.php/s/03oc1NgbKoI9RCR    
   - 包含：
     - Xfce 版（0916; 最小安装版）
+	- https://mdrights.blaucloud.de/index.php/s/03oc1NgbKoI9RCR    
+	- md5sum: 8d7a00307419e20e4fbcf32874a18088
     - cinnamon 版 ( 0916)
+	- https://drive.google.com/open?id=0BzDyGoE5b5SdQWpueUpQdW1VS2M
+	- md5sum: 3945bb0417b5bb2ebd9205ccb77c191d
 
 
 <hr>
