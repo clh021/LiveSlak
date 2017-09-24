@@ -1,5 +1,5 @@
 # Showcases for using with Slackware Live:
-## Only install on MATE or so (not XFCE).
+## Only install on the flavors other than XFCE.
 NetworkManager-openconnect
 NetworkManager-openvpn
 calibre

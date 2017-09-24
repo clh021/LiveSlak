@@ -3,26 +3,24 @@
 > Forked from Alien Bob's powerful building script for Slackware Live. Thank you, Alien !    
 > 本套脚本 forked 自 [Alien Bob 大牛](http://www.slackware.com/%7Ealien/liveslak/), git://bear.alienbase.nl/liveslak.git
 
-_最后更新：2017.09.17 15:30_    
+_最后更新：2017.09.24 15:30_    
 
 构建我自己的 Live 发行版 （基于 Slackware）。主要侧重：
   - 中文化
   - 隐私加强
     - 隐私保护和墙国特色信息/通讯自由相关的应用
-    - 系统加固（包括：防火墙、文件系统加固、内核加固等……todo）
+    - 系统加固（包括：防火墙、文件系统加固等……）
 
 ## Download
 
 - 下载地址 _（可能会因更新而变动）_：
   - 包含：
-    - Xfce 版（0916; 最小安装版）
+    - Xfce 版（0924; 最小安装版）
 	- https://sourceforge.net/projects/liveslak-atgfw/files/iso/
-	- https://mdrights.blaucloud.de/index.php/s/03oc1NgbKoI9RCR    
-	- md5sum: 8d7a00307419e20e4fbcf32874a18088
-    - cinnamon 版 ( 0916)
+	- md5sum: 6f6d318125627f4816113854234201fa
+    - cinnamon 版 ( 0924)
 	- https://sourceforge.net/projects/liveslak-atgfw/files/iso/
-	- https://drive.google.com/open?id=0BzDyGoE5b5SdQWpueUpQdW1VS2M
-	- md5sum: 3945bb0417b5bb2ebd9205ccb77c191d
+	- md5sum: d947a1cc769561e2f5688c932dc3e72a
 
 
 <hr>
@@ -30,6 +28,13 @@ _最后更新：2017.09.17 15:30_
 ## Usage
 
 - 如果你是**最终用户**，请阅读：[LiveSlak 最终用户介绍](https://mdrights.github.io/os-observe/posts/2017/08/Liveslak-intro.html)
+
+## Device Requirements
+
+- 您的机器必须是 x86_64位的啦；
+- XFCE 版需要至少 1G ram内存; cinnamon版需要至少 2G ；
+- 这意味着如果你在虚拟机里运行，请为其设置足够的内存，而虚拟机的宿主机至少要有 4G 物理内存。
+- 经测试，有的电脑的 (U)EFI 并不买本系统的bootloader (syslinux + grub 2) 的帐，因此请尽可能选择传统 BIOS 或带 CSM 的 EFI 启动（还会持续解决改问题）。
 
 ## Build
 
@@ -63,6 +68,7 @@ _最后更新：2017.09.17 15:30_
 
 ## Change Log
 
+- 2017.09.24	上游更新（包括添加了 python 3.6）
 - 2017.09.17	上游系統更新（見[repo](https://mirrors.slackware.com/slackware/slackware64-current/ChangeLog.txt)）；包括內核升至4.9.50，修復包括BlueBorne藍牙模塊的漏洞。
 - 2017.09.16	增加了 Jitsi；修正 Tor-hardened的錯誤（去掉 chroot功能；保留了 Tor 的 Stream Isolation 配置（可用）；增加了 iptables防火牆規則，可以讓**本地**所有DNS流量強制走 Tor，避免了DNS泄漏（透明代理）；還增加了 iptables規則可讓本系統變身 “洋蔥” 網關，連接並流入本系統的機器的所有流量都走Tor隧道（透明代理））。
 - 2017.09.09	增加了一些与数据保护相关的工具： `wipe`, `secure-delete`, `testdisk`; 增加了文本编辑器：`Ted`, `docx2txt`。
@@ -88,7 +94,7 @@ _最后更新：2017.09.17 15:30_
 <hr>
 构建脚本的详细介绍和使用方法请见 Alien的 [README.txt](https://github.com/mdrights/LiveSlak/blob/mdrights/README.txt)   
 
-**交流反饋**：這裏發issue，或 IRC/Riot 頻道：#digitalrightscn ; 或 TG: https://t.me/joinchat/EMyvPA4M5YBESP74ID9qIA    
+**交流反饋**：這裏發issue，或 IRC/Riot; TG頻道：https://t.me/liveslak ; 或 群组: https://t.me/joinchat/EMyvPA4M5YBESP74ID9qIA    
 
 =========   
 Copyright 2014 - 2017 Eric Hameleers, Eindhoven, NL  
