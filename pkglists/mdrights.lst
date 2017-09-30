@@ -54,6 +54,10 @@ secure-delete
 # 这些只提供在cinnamon版里（因为需要的依赖包比较大/多）
 #keepassx 
 #jitsi
+#nodejs
+#nwjs
+#rubygem-sass
+#Signal-Desktop
 
 ## 从其他仓库拽过来的 -Grab from others' repo 
 veracrypt
