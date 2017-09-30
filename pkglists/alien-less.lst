@@ -7,7 +7,7 @@ calibre
 #chromium-pepperflash-plugin
 #chromium-widevine-plugin
 #dropbox-client
-ffmpeg
+#ffmpeg 	# Officical repo has newer one.
 #freerdp
 #gcc5
 #gecko-mediaplayer
@@ -28,7 +28,7 @@ p7zip
 python-twisted
 #sshfs-fuse
 unrar
-veracrypt
+#veracrypt	# I had already built it.
 #vlc
 
 # LXQT deps:
