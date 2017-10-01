@@ -17,10 +17,10 @@ _最后更新：2017.10.01 15:30_
   - 包含：
     - Xfce 版（0930; 最小安装版）
 	- https://sourceforge.net/projects/liveslak-atgfw/files/iso/
-	- md5sum: 6f6d318125627f4816113854234201fa
+	- md5sum: ac59e6c0b2ee8d3718b2b3a79dbe9e25
     - cinnamon 版 ( 0929)
 	- https://sourceforge.net/projects/liveslak-atgfw/files/iso/
-	- md5sum: d947a1cc769561e2f5688c932dc3e72a
+	- md5sum: b1bf2a0cc5f8d5d01792ff4d7cd9decd
 
 
 <hr>
@@ -34,7 +34,7 @@ _最后更新：2017.10.01 15:30_
 - 您的机器必须是 x86_64位的啦；
 - XFCE 版需要至少 1G ram内存; cinnamon版需要至少 2G ；
 - 这意味着如果你在虚拟机里运行，请为其设置足够的内存，而虚拟机的宿主机至少要有 4G 物理内存。
-- 经测试，有的电脑的 (U)EFI 并不买本系统的bootloader (syslinux + grub 2) 的帐，因此请尽可能选择传统 BIOS 或带 CSM 的 EFI 启动（还会持续解决改问题）。
+- 经测试，有的电脑是 (U)EFI, 并不买本系统的 bootloader (syslinux + grub2) 的帐，如果遇到这种情况请选择传统 BIOS 或带 CSM 的 EFI的电脑使用，或者在虚拟机里使用（并请告诉我 Orz）。
 
 ## Build
 
@@ -95,14 +95,32 @@ _最后更新：2017.10.01 15:30_
 <hr>
 构建脚本的详细介绍和使用方法请见 Alien的 [README.txt](https://github.com/mdrights/LiveSlak/blob/mdrights/README.txt)   
 
-**交流反饋**：這裏發issue，或 IRC/Riot; TG頻道：https://t.me/liveslak ; 或 群组: https://t.me/joinchat/EMyvPA4M5YBESP74ID9qIA    
+**交流反饋**：這裏發issue，或 IRC/Matrix: #DigitalrightsCN; TG頻道：https://t.me/liveslak ; 或 群组: https://t.me/joinchat/EMyvPA4M5YBESP74ID9qIA    
 
-=========   
+
+==============================================================================   
 Copyright 2014 - 2017 Eric Hameleers, Eindhoven, NL  
 Copyright 2017 MDrights (mdrights at tutanota dot de)  
 All rights reserved  
 
 只要本版权声明和许可声明出现在所有版本的本软件中，本软件即可被允许以任何目的（有偿或无偿地）使用、复制、修改和分发。  
 
-=========
+    Permission to use, copy, modify, and distribute this software for
+#   any purpose with or without fee is hereby granted, provided that
+#   the above copyright notice and this permission notice appear in all
+#   copies.
+#
+#   THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESSED OR IMPLIED
+#   WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+#   MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+#   IN NO EVENT SHALL THE AUTHORS AND COPYRIGHT HOLDERS AND THEIR
+#   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+#   LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
+#   USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+#   ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+#   OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+#   OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+#   SUCH DAMAGE.
+# -----------------------------------------------------------------------------
 
