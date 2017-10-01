@@ -3,7 +3,7 @@
 > Forked from Alien Bob's powerful building script for Slackware Live. Thank you, Alien !    
 > 本套脚本 forked 自 [Alien Bob 大牛](http://www.slackware.com/%7Ealien/liveslak/), git://bear.alienbase.nl/liveslak.git
 
-_最后更新：2017.09.24 15:30_    
+_最后更新：2017.10.01 15:30_    
 
 构建我自己的 Live 发行版 （基于 Slackware）。主要侧重：
   - 中文化
@@ -15,10 +15,10 @@ _最后更新：2017.09.24 15:30_
 
 - 下载地址 _（可能会因更新而变动）_：
   - 包含：
-    - Xfce 版（0924; 最小安装版）
+    - Xfce 版（0930; 最小安装版）
 	- https://sourceforge.net/projects/liveslak-atgfw/files/iso/
 	- md5sum: 6f6d318125627f4816113854234201fa
-    - cinnamon 版 ( 0924)
+    - cinnamon 版 ( 0929)
 	- https://sourceforge.net/projects/liveslak-atgfw/files/iso/
 	- md5sum: d947a1cc769561e2f5688c932dc3e72a
 
@@ -51,23 +51,24 @@ _最后更新：2017.09.24 15:30_
 
 ## My modification
 
-- #519: Change the default locale in the first option on the syslinux boot menu, to zh; and delete the option/submenus for non-US keyboard.
-- #1366 & #1896: chmod a bunch of rc files as to disable them starting in booting: e.g. bluetooth,rpc,cups. If NetworkManager is installed, disabling inet1 and wireless as well.
-- #2248: Enabling the addons/ & optional/ directories under XFCE mode (substituted by SLACKWARE)
-- #167+: Remove some serials of Slackware repo in the tagfiles strings of MATE and CINNAMON.
-- #1295: Add user account for Tor.
-- #1591: Disable most of the KDE4 configuration (for X system) when not building for KDE4 type.
+- 519: Change the default locale in the first option on the syslinux boot menu, to zh; and delete the option/submenus for non-US keyboard.
+- 1366 & #1896: chmod a bunch of rc files as to disable them starting in booting: e.g. bluetooth,rpc,cups. If NetworkManager is installed, disabling inet1 and wireless as well.
+- 2248: Enabling the addons/ & optional/ directories under XFCE mode (substituted by SLACKWARE)
+- 167+: Remove some serials of Slackware repo in the tagfiles strings of MATE and CINNAMON.
+- 1295: Add user account for Tor.
+- 1591: Disable most of the KDE4 configuration (for X system) when not building for KDE4 type.
 - Custom_config: Add my configuration files to the system, which can be put under such paradigm:    
   - skel/skel*.txz : any files except skel-xfce.txz in it will be put to $HOME under **every desktopType except XFCE** which only parse skel-xfce.txz;
-  - rootcopy/ : now we can have **etc-x.txz** & **opt-x.txz** that can be parsed to /etc and /opt respectively.
+  - rootcopy/ : now we can have **etc-x.txz** & **opt-x.txz** that can be parsed to /etc and /opt respectively. (otherwise seems rootcopy/ doesn't work)  
 - ....: Add Chinese (simp, trad, Cantonese) encodings options on the bootup screen.
 - Add my own pkglist: mdrights{.conf,.lst} 
     - 增加了的包绝大多数为自己编译，列表在：https://github.com/mdrights/LiveSlak/blob/mdrights/pkglists/mdrights.lst
     - 您有何提议可以发issue告诉我喔～
-    - 如果希望在线获得这些软件包，我可以考虑在线共享。
+    - 如果希望在线获得这些软件包，我可以考虑在线共享（但仍建议你自己编译）。
 
 ## Change Log
 
+- 2017.09.30	更新一些自添加的软件：Tor-nonprism（修复防火墙规则）；Icecat-hardened（用户配置改为无痕浏览和默认socks5代理（不过启动两次浏览器才生效））；升级 shadowsocks-libev至3.1.0；新增 Signal-Desktop；Libreoffice 新增中文包，即界面默认为中文了；新增ssr脚本和 ss-redir透明代理脚本（详情见《用户手册》）。
 - 2017.09.24	上游更新（包括添加了 python 3.6）
 - 2017.09.17	上游系統更新（見[repo](https://mirrors.slackware.com/slackware/slackware64-current/ChangeLog.txt)）；包括內核升至4.9.50，修復包括BlueBorne藍牙模塊的漏洞。
 - 2017.09.16	增加了 Jitsi；修正 Tor-hardened的錯誤（去掉 chroot功能；保留了 Tor 的 Stream Isolation 配置（可用）；增加了 iptables防火牆規則，可以讓**本地**所有DNS流量強制走 Tor，避免了DNS泄漏（透明代理）；還增加了 iptables規則可讓本系統變身 “洋蔥” 網關，連接並流入本系統的機器的所有流量都走Tor隧道（透明代理））。
