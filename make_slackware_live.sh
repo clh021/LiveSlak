@@ -2204,7 +2204,7 @@ cp -a ${LIVE_TOOLDIR}/syslinux ${LIVE_STAGING}/boot/
 if [ "$SL_ARCH" = "x86_64" -o "$EFI32" = "YES" ]; then
   # Copy the UEFI boot directory structure:
   mkdir -p ${LIVE_STAGING}/EFI/BOOT
-  cp -a ${LIVE_TOOLDIR}/EFI/BOOT/{grub-embedded.cfg,make-grub.sh,*.txt,theme} ${LIVE_STAGING}/EFI/BOOT/
+  cp -a ${LIVE_TOOLDIR}/EFI/BOOT/{grub-embedded.cfg,make-grub.sh,*.txt,theme,*.efi} ${LIVE_STAGING}/EFI/BOOT/  ## Mod by MDrights; Use Gparted-live's EFI image.
   if [ "$LIVEDE" = "XFCE" ]; then
     # We do not use the unicode font, so it can be removed to save space:
     rm -f ${LIVE_STAGING}/EFI/BOOT/theme/unicode.pf2

@@ -18,7 +18,7 @@ if [ -f /home/live/Desktop/ss-libev.json ]; then
 	if [ "$?" = 0 ]; then echo "ss-redir has been started successfully."; fi
 
 else
-	echo "We didn't find your .json file for Shadowsocks! Please put it on Desktop and name it as `ss-libev.json`."
+	echo "We didn't find your .json file for Shadowsocks! Please put it on Desktop and name it as ss-libev.json."
 	exit 1
 fi
 

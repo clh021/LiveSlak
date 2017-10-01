@@ -174,17 +174,17 @@ SEQ_XFCEBASE="${MINLIST},xbase,xapbase,xfcebase"
 # - each series will become a squashfs module:
 SEQ_KDE4BASE="pkglist:${MINLIST},xbase,xapbase,kde4base"
 
-# List of Slackware package series with Plasma5 instead of KDE 4 (full install):
+# List of Slackware package series with Plasma5  (full install):
 # - each will become a squashfs module:
 SEQ_PLASMA5="tagfile:a,ap,d,e,f,k,l,n,t,tcl,x,xap,xfce,y pkglist:slackextra,kde4plasma5,plasma5,alien,alienrest,slackpkgplus"
 
-# List of Slackware package series with MSB instead of KDE 4 (full install):
+# List of Slackware package series with MATE  (not full install, stripped out some serials by MD):
 # - each will become a squashfs module:
-SEQ_MSB="tagfile:a,ap,d,e,f,k,l,n,t,tcl,x,xap,xfce,y pkglist:slackextra,mate,slackpkgplus"
+SEQ_MSB="tagfile:a,ap,d,l,n,x,xap pkglist:slackextra,mate"
 
-# List of Slackware package series with Cinnamon instead of KDE4 (full install):
+# List of Slackware package series with Cinnamon  (not full install):
 # - each will become a squashfs module:
-SEQ_CIN="tagfile:a,ap,d,e,f,k,l,n,t,tcl,x,xap,xfce,y pkglist:slackextra,cinnamon,slackpkgplus"
+SEQ_CIN="tagfile:a,ap,d,l,n,x,xap pkglist:slackextra,cinnamon"
 
 # Slackware package series with Gnome3/systemd instead of KDE4 (full install):
 # - each will become a squashfs module:
@@ -273,8 +273,9 @@ cleanup() {
 
   rmdir ${LIVE_ROOTDIR} 2>${DBGOUT}
   rmdir ${LIVE_WORK}/*_$$ 2>${DBGOUT}
-  rm ${LIVE_MOD_OPT}/* 2>${DBGOUT} || true
-  rm ${LIVE_MOD_ADD}/* 2>${DBGOUT} || true
+  rm -r ${LIVE_MOD_OPT}/ 2>${DBGOUT} || true
+  rm -r ${LIVE_MOD_ADD}/ 2>${DBGOUT} || true
+  rm -r ${LIVE_STAGING}/* 2>${DBGOUT} || true
 }
 trap 'echo "*** $0 FAILED at line $LINENO ***"; cleanup; exit 1' ERR INT TERM
 
@@ -515,7 +516,7 @@ function gen_bootmenu() {
   rm -f ${MENUROOTDIR}/kbd.cfg
   rm -f ${MENUROOTDIR}/lang*.cfg
 
-  # Generate main (US) vesamenu.cfg:
+  # Generate main (us) vesamenu.cfg:  # MDrights modified the locale parameter in the default block of menu.tpl.
   cat ${LIVE_TOOLDIR}/menu.tpl | sed \
     -e "s/@KBD@/us/g" \
     -e "s/@LANG@/us/g" \
@@ -537,6 +538,7 @@ function gen_bootmenu() {
   do
     LANDSC=$(cat ${LIVE_TOOLDIR}/languages |grep "^$LANCOD:" |cut -d: -f2)
     KBD=$(cat ${LIVE_TOOLDIR}/languages |grep "^$LANCOD:" |cut -d: -f3)
+
     # First, create keytab files if they are missing:
     if [ ! -f ${MENUROOTDIR}/${KBD}.ktl ]; then
       keytab-lilo $(find /usr/share/kbd/keymaps/i386 -name "us.map.gz") $(find /usr/share/kbd/keymaps/i386 -name "${KBD}.map.gz") > ${MENUROOTDIR}/${KBD}.ktl
@@ -1162,6 +1164,7 @@ echo "-- Configuring the base system."
 umount ${LIVE_ROOTDIR} 2>${DBGOUT} || true
 mount -t overlay -o lowerdir=${RODIRS},upperdir=${INSTDIR},workdir=${LIVE_OVLDIR} overlay ${LIVE_ROOTDIR}
 
+
 # Determine the kernel version in the Live OS:
 if [ "$SL_ARCH" = "x86_64" -o "$SMP32" = "NO" ]; then
   KGEN=$(ls --indicator-style=none ${LIVE_ROOTDIR}/var/log/packages/kernel*modules* |grep -v smp |head -1 |rev | cut -d- -f3 |tr _ - |rev)
@@ -1353,8 +1356,10 @@ yes o | ARCH=${SL_ARCH} /usr/sbin/slackpkg new-config
 EOSL
 
 if [ -f ${LIVE_ROOTDIR}/etc/rc.d/rc.networkmanager ]; then
-  # Enable NetworkManager if present:
+  # Enable NetworkManager if present, and thus disable the default:
   chmod +x ${LIVE_ROOTDIR}/etc/rc.d/rc.networkmanager
+  chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.inet1
+  chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.wireless
   # And disable Slackware's own way of configuring eth0:
   cat <<EOT > ${LIVE_ROOTDIR}/etc/rc.d/rc.inet1.conf
 IFNAME[0]="eth0"
@@ -1542,7 +1547,8 @@ cat << "EOT" > ${LIVE_ROOTDIR}/etc/skel/.profile
 [[ -r ~/.bashrc ]] && . ~/.bashrc
 
 # Define some useful aliases:
-alias ll="ls -la $LS_OPTIONS"
+alias ls="ls --color=auto $LS_OPTIONS"
+alias ll="ls -la --color=auto $LS_OPTIONS"
 lsp() { basename $(ls -1 "/var/log/packages/$@"*) ; }
 alias md="mkdir"
 alias tarview="tar -tvf"
@@ -1574,11 +1580,16 @@ echo "-- Configuring XFCE."
 # Prepare some XFCE defaults for the 'live' user and any new users.
 # (don't show icons on the desktop for irrelevant stuff).
 # Also, allow other people to add their own custom skel*.txz archives:
-mkdir -p ${LIVE_ROOTDIR}/etc/skel/
-for SKEL in ${LIVE_TOOLDIR}/skel/skel*.txz ; do
-  tar -xf ${SKEL} -C ${LIVE_ROOTDIR}/etc/skel/
-done
 
+if [ "$LIVEDE" = "XFCE" ]; then
+  mkdir -p ${LIVE_ROOTDIR}/etc/skel/
+#    for SKEL in ${LIVE_TOOLDIR}/skel/skel*.txz ; do
+	SKEL="${LIVE_TOOLDIR}/skel/skel-xfce.txz"
+  	tar -xf ${SKEL} -C ${LIVE_ROOTDIR}/etc/skel/
+#    done
+fi
+
+if [ "$LIVEDE" = "KDE4" ]; then
 # -------------------------------------------------------------------------- #
 echo "-- Configuring KDE4."
 # -------------------------------------------------------------------------- #
@@ -1609,19 +1620,6 @@ cat <<EOT > ${LIVE_ROOTDIR}/var/lib/kdm/kdmsts
 EOT
 chmod 600 ${LIVE_ROOTDIR}/var/lib/kdm/kdmsts
 
-# Set default GTK+ theme for Qt applications:
-mkdir -p  ${LIVE_ROOTDIR}/etc/skel/
-cat << EOF > ${LIVE_ROOTDIR}/etc/skel/.gtkrc-2.0
-include "/usr/share/themes/Adwaita/gtk-2.0/gtkrc"
-include "/usr/share/gtk-2.0/gtkrc"
-include "/etc/gtk-2.0/gtkrc"
-gtk-theme-name="Adwaita"
-EOF
-mkdir -p ${LIVE_ROOTDIR}/etc/skel/.config/gtk-3.0
-cat << EOF > ${LIVE_ROOTDIR}/etc/skel/.config/gtk-3.0/settings.ini
-[Settings]
-gtk-theme-name = Adwaita
-EOF
 
 # Be gentle to low-performance USB media and limit disk I/O:
 mkdir -p  ${LIVE_ROOTDIR}/etc/skel/.kde/share/config
@@ -1665,6 +1663,22 @@ cat <<EOT >> ${LIVE_ROOTDIR}/etc/skel/.config/konsolerc
 DefaultProfile=Shell.profile
 
 EOT
+
+fi  # Finish configuring KDE4. (mod by MDrights)
+
+# Set default GTK+ theme for Qt applications: 		# These three sections were moved out of the KDE4 setting.
+mkdir -p  ${LIVE_ROOTDIR}/etc/skel/
+cat << EOF > ${LIVE_ROOTDIR}/etc/skel/.gtkrc-2.0
+include "/usr/share/themes/Adwaita/gtk-2.0/gtkrc"
+include "/usr/share/gtk-2.0/gtkrc"
+include "/etc/gtk-2.0/gtkrc"
+gtk-theme-name="Adwaita"
+EOF
+mkdir -p ${LIVE_ROOTDIR}/etc/skel/.config/gtk-3.0
+cat << EOF > ${LIVE_ROOTDIR}/etc/skel/.config/gtk-3.0/settings.ini
+[Settings]
+gtk-theme-name = Adwaita
+EOF
 
 # Configure (default) UTC timezone so we can change it during boot:
 mkdir -p ${LIVE_ROOTDIR}/etc/skel/.kde/share/config
@@ -1807,13 +1821,13 @@ EOT
 
 fi # End LIVEDE = STUDIOWARE  
 
+# -------------------------------------------------------------------------- #
+echo "-- Configuring ${LIVEDE} by calling 'custom_config()'."
+# -------------------------------------------------------------------------- #
+
 # You can define the function 'custom_config()' by uncommenting it in
 # the configuration file 'make_slackware_live.conf'.
 if type custom_config 1>/dev/null 2>/dev/null ; then
-
-  # -------------------------------------------------------------------------- #
-  echo "-- Configuring ${LIVEDE} by calling 'custom_config()'."
-  # -------------------------------------------------------------------------- #
 
   # This is particularly useful if you defined a non-standard "LIVEDE"
   # in 'make_slackware_live.conf', in which case you must specify your custom
@@ -1821,6 +1835,17 @@ if type custom_config 1>/dev/null 2>/dev/null ; then
   custom_config
 
 fi
+
+  # ======== Universal Skel Inserting ========
+  # Copied from the XFCE session by MDrights;
+  # Also, allow other people to add their own custom skel*.txz archives:
+mkdir -p ${LIVE_ROOTDIR}/etc/skel/
+for SKEL in ${LIVE_TOOLDIR}/skel/skel*.txz ; do
+  if [ "$SKEL" != "${LIVE_TOOLDIR}/skel/skel-xfce.txz" ]; then
+    tar -xf ${SKEL} -C ${LIVE_ROOTDIR}/etc/skel/
+  fi
+done
+
 
 # Workaround a bug where our Xkbconfig is not loaded sometimes:
 echo "setxkbmap" > ${LIVE_ROOTDIR}/home/${LIVEUID}/.xprofile
@@ -1865,10 +1890,16 @@ sed -i ${LIVE_ROOTDIR}/etc/inittab -e "s/\(id:\).\(:initdefault:\)/\1${RUNLEVEL}
 [ -f ${LIVE_ROOTDIR}/etc/rc.d/rc.yp ] && chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.yp
 [ -f ${LIVE_ROOTDIR}/etc/rc.d/rc.sshd ] && chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.sshd
 
-# But enable NFS client support and CUPS:
-[ -f ${LIVE_ROOTDIR}/etc/rc.d/rc.rpc ] && chmod +x ${LIVE_ROOTDIR}/etc/rc.d/rc.rpc
-[ -f ${LIVE_ROOTDIR}/etc/rc.d/rc.cups ] && chmod +x ${LIVE_ROOTDIR}/etc/rc.d/rc.cups
-[ -f ${LIVE_ROOTDIR}/etc/rc.d/rc.cups-browsed ] && chmod +x ${LIVE_ROOTDIR}/etc/rc.d/rc.cups-browsed
+# But enable NFS client support and CUPS (DISABLED by MDrights):
+[ -f ${LIVE_ROOTDIR}/etc/rc.d/rc.rpc ] && chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.rpc
+[ -f ${LIVE_ROOTDIR}/etc/rc.d/rc.cups ] && chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.cups
+[ -f ${LIVE_ROOTDIR}/etc/rc.d/rc.cups-browsed ] && chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.cups-browsed
+[ -f ${LIVE_ROOTDIR}/etc/rc.d/rc.bluetooth ] && chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.bluetooth
+[ -f ${LIVE_ROOTDIR}/etc/rc.d/rc.inet2 ] && chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.inet2
+
+# Enable it as I need it:
+[ -f ${LIVE_ROOTDIR}/etc/rc.d/rc.firewall ] && chmod +x ${LIVE_ROOTDIR}/etc/rc.d/rc.firewall
+
 
 # Add a softvol pre-amp to ALSA - some computers have too low volumes.
 # If etc/asound.conf exists it's configuring ALSA to use Pulse,
@@ -2244,7 +2275,9 @@ echo "-- Assemble the ISO image."
 
 # We keep strict size requirements for the XFCE ISO:
 # addons/optional modules will not be added.
-if [ "$LIVEDE" != "XFCE"  ]; then
+# Modified by MDrights for enabling addons & optional things in XFCE.
+
+if [ "$LIVEDE" != "SLACKWARE"  ]; then
   # Copy our stockpile of add-on modules into place:
   if ls ${LIVE_TOOLDIR}/addons/*.sxz 1>/dev/null 2>&1 ; then
     cp ${LIVE_TOOLDIR}/addons/*.sxz ${LIVE_MOD_ADD}/
@@ -2270,6 +2303,7 @@ fi
 # Directory for rootcopy files (everything placed here will be copied
 # verbatim into the overlay root):
 mkdir -p ${LIVE_STAGING}/${LIVEMAIN}/rootcopy
+
 
 # Create an ISO file from the directories found below ${LIVE_STAGING}:
 create_iso ${LIVE_STAGING}

@@ -14,7 +14,7 @@ if [ -f /home/live/Desktop/ssr.json ]; then
 	if [ "$?" = 0 ]; then echo "ssr has been started successfully."; fi
 
 else
-	echo "We didn't find your .json file for ShadowsocksR! Please put it on Desktop and name it as `ssr.json`."
+	echo "We didn't find your .json file for ShadowsocksR! Please put it on Desktop and name it as ssr.json."
 	exit 1
 fi
 

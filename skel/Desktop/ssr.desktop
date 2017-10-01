@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=开启SSR
 Comment[En]=Start SSR to break the wall!
-Exec=sh -c '/etc/rc.d/rc.ssr'
+Exec=bash /etc/rc.d/rc.ssr
 Icon=telegram
 Type=Application
 Categories=System
