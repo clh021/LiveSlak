@@ -1,0 +1,126 @@
+#!/bin/bash
+# Start ss-redir and invoke iptables rules
+# Written by MDrights.
+
+set -e
+
+
+if [ "$UID" != 0 ]; then echo "I should be run as root. your are not root. Quit..."; exit 1; fi
+
+
+# Detect user's config file for ss-libev. They are asked to put it on their Desktop.
+
+if [ -f /home/live/Desktop/ss-libev.json ]; then
+
+	# Start ss-redir
+	/usr/bin/ss-redir -a nobody -u -c /home/live/Desktop/ss-libev.json -f /var/run/shadowsocks.pid
+	RES=$?
+	if [ "$?" = 0 ]; then echo "ss-redir has been started successfully."; fi
+
+else
+	echo "We didn't find your .json file for Shadowsocks! Please put it on Desktop and name it as `ss-libev.json`."
+	exit 1
+fi
+
+SERVERIP="$(awk -F"\"" '/server"/ { print $4 }' /home/live/Desktop/ss-libev.json)"
+
+
+# =================================================================
+#   Generate our iptables rules to redirect traffic to ss-redir.
+# =================================================================
+
+IPT="/usr/sbin/iptables"
+
+        echo "Setting iptables policies..."
+        # Flush old rules, delete chains
+        $IPT -F
+        $IPT -X
+
+        # Construct the default policy -- drop everything
+        echo "    Setting policies..."
+        $IPT -P INPUT DROP
+        $IPT -P OUTPUT ACCEPT
+        $IPT -P FORWARD DROP
+
+        $IPT -N local
+        $IPT -N stateful
+        $IPT -N inbound
+        $IPT -N outbound
+        $IPT -N log
+
+        # Statefullness
+        echo "    Setting stateful inspection..."
+        $IPT -A stateful -p tcp -m state --state ESTABLISHED,RELATED -j ACCEPT
+        $IPT -A stateful -p udp -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+        $IPT -A INPUT  -p tcp -j stateful
+        $IPT -A INPUT  -p udp -j stateful
+        $IPT -A OUTPUT -p tcp -j stateful
+        $IPT -A OUTPUT -p udp -j stateful
+        ########
+
+	        # Accept loopback traffic
+        echo "    Accepting loopback traffic..."
+        $IPT -A local  -s 127.0.0.1/8 -d 127.0.0.1/8 -j ACCEPT
+        $IPT -A local  -j DROP
+
+        $IPT -A INPUT  -s 127.0.0.1/8 -j local
+        $IPT -A OUTPUT -s 127.0.0.1/8 -j local
+        ########
+
+        # Inbound traffic to accept
+        echo "    Setting rules for inbound traffic..."
+
+        # Rate limiting rules:
+        #      Set rates with burst for new conns, then log/drop the excess
+        #$IPT -A inbound -p tcp --syn -m limit --limit 4/s --limit-burst 10 -j ACCEPT
+        $IPT -A inbound -p icmp           --icmp-type 8 -m limit --limit 1/s --limit-burst 5  -j ACCEPT
+        $IPT -A inbound -p icmp           --icmp-type 11 -m limit --limit 1/s --limit-burst 5  -j ACCEPT
+
+        $IPT -A INPUT -p tcp  -j inbound
+        $IPT -A INPUT -p icmp -j inbound
+
+        # Drop these to avoid logging them
+        #$IPT -A INPUT -p udp  -d $bcast1                   -j DROP
+        #$IPT -A INPUT -p udp  -d $bcast2   --dport 67      -j DROP
+        #$IPT -A INPUT         -d $mcast                    -j DROP
+        ########
+
+        # Outbound traffic to allow
+        echo "    Setting rules for outbound traffic..."
+        #$IPT -A OUTPUT -p tcp -d $lan     --dport 80    -j REJECT
+        ########
+
+	# ------------ NAT -------------
+	echo "    Set NAT chains..."
+	# Create a new chain
+	$IPT -t nat -N shadowsocks
+	# Return these
+	$IPT -t nat -A shadowsocks -d 0/8 -j RETURN
+	$IPT -t nat -A shadowsocks -d 127/8 -j RETURN
+ 	$IPT -t nat -A shadowsocks -d 10/8 -j RETURN
+	$IPT-t nat -A shadowsocks -d 169.254/16 -j RETURN
+	$IPT-t nat -A shadowsocks -d 172.16/12 -j RETURN
+ 	$IPT-t nat -A shadowsocks -d 192.168/16 -j RETURN
+ 	$IPT-t nat -A shadowsocks -d 224/4 -j RETURN
+ 	$IPT-t nat -A shadowsocks -d 240/4 -j RETURN
+
+	# Avoid sending to ourselves'
+	$IPT -t nat -A shadowsocks -d $SERVERIP -j RETURN
+
+	# Redirect all of them
+	$IPT -t nat -A shadowsocks ! -p icmp -j REDIRECT --to-ports 1080
+
+	# Finally enable our chain
+	$IPT -t nat -A OUTPUT -j shadowsocks
+
+
+        # Log all dropped packets
+        echo "    Setting logging rules..."
+        $IPT -A log -j LOG -m limit --limit 4/minute --limit-burst 3 --log-level info --log-prefix "IPTABLES: "
+        $IPT -A log -j DROP
+
+        $IPT -A INPUT  -j log
+        #$IPT -A OUTPUT -j log
+        ########
+
