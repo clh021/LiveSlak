@@ -27,7 +27,8 @@ _最后更新：2017.10.01 15:30_
 
 ## Usage
 
-- 如果你是**最终用户**，请阅读：[LiveSlak 最终用户介绍](https://mdrights.github.io/os-observe/posts/2017/08/Liveslak-intro.html)
+- 如果你是**最终用户**，请阅读：[LiveSlak 最终用户介绍](https://mdrights.github.io/os-observe/posts/2017/09/Liveslak-intro.html)
+- 《用户手册》：[https://mdrights.github.io/os-observe/docs/LiveSlak-Users-Guide.html](https://mdrights.github.io/os-observe/docs/LiveSlak-Users-Guide.html)    
 
 ## Device Requirements
 
