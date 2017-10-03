@@ -69,6 +69,7 @@ _最后更新：2017.10.01 15:30_
 
 ## Change Log
 
+- 2017.10.03	加入了藏文（bo_IN, bo_CN）和维吾尔文（ug_CN）的显示支持（注：目前来说维吾尔文支持较好，而有些应用/桌面没有藏文的翻译项目，还需要更多藏语使用者对各应用和桌面（如 XFCE）提供翻译。）  
 - 2017.09.30	更新一些自添加的软件：Tor-nonprism（修复防火墙规则）；Icecat-hardened（用户配置改为无痕浏览和默认socks5代理（不过启动两次浏览器才生效））；升级 shadowsocks-libev至3.1.0；新增 Signal-Desktop；Libreoffice 新增中文包，即界面默认为中文了；新增ssr脚本和 ss-redir透明代理脚本（详情见《用户手册》）。
 - 2017.09.24	上游更新（包括添加了 python 3.6）
 - 2017.09.17	上游系統更新（見[repo](https://mirrors.slackware.com/slackware/slackware64-current/ChangeLog.txt)）；包括內核升至4.9.50，修復包括BlueBorne藍牙模塊的漏洞。

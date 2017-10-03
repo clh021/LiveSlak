@@ -99,3 +99,10 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# Vim temp files
+.*~
+*~
+
+# apps in rootcopy/
+rootcopy/*
