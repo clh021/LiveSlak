@@ -36,9 +36,6 @@ shadowsocks-libev
 telegram
 
 
-## 字体（太大了暂不放入）
-#noto-cjk-font-ttf
-
 ## 写写字
 libreoffice
 libreoffice-langpack
@@ -68,3 +65,6 @@ virtualbox-kernel-addons
 # For Qemu VM:
 #spice-protocol
 #xf86-video-qxl
+
+## 字体（太大了暂不放入）
+#noto-cjk-font-ttf

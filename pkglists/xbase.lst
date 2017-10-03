@@ -294,7 +294,7 @@ sessreg
 setxkbmap
 shared-mime-info
 showfont
-sinhala_lklug-font-ttf
+#sinhala_lklug-font-ttf
 smproxy
 speexdsp
 sqlite
@@ -302,7 +302,7 @@ startup-notification
 svgalib
 t1lib
 #tibmachuni-font-ttf
-ttf-indic-fonts
+#ttf-indic-fonts
 udisks
 udisks2
 upower
