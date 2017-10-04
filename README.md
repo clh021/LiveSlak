@@ -3,7 +3,7 @@
 > Forked from Alien Bob's powerful building script for Slackware Live. Thank you, Alien !    
 > 本套脚本 forked 自 [Alien Bob 大牛](http://www.slackware.com/%7Ealien/liveslak/), git://bear.alienbase.nl/liveslak.git
 
-_最后更新：2017.10.01 15:30_    
+_最后更新：2017.10.04 18:30_    
 
 构建我自己的 Live 发行版 （基于 Slackware）。主要侧重：
   - 中文化
@@ -15,10 +15,10 @@ _最后更新：2017.10.01 15:30_
 
 - 下载地址 _（可能会因更新而变动）_：
   - 包含：
-    - Xfce 版（0930; 最小安装版）
+    - Xfce 版（1004; 最小安装版）
 	- https://sourceforge.net/projects/liveslak-atgfw/files/iso/
-	- md5sum: ac59e6c0b2ee8d3718b2b3a79dbe9e25
-    - cinnamon 版 ( 0929)
+	- md5sum: a2b2408c9d9dd8110324795816b43fbe
+    - cinnamon 版 (1004)
 	- https://sourceforge.net/projects/liveslak-atgfw/files/iso/
 	- md5sum: b1bf2a0cc5f8d5d01792ff4d7cd9decd
 
@@ -33,7 +33,7 @@ _最后更新：2017.10.01 15:30_
 ## Device Requirements
 
 - 您的机器必须是 x86_64位的啦；
-- XFCE 版需要至少 1G ram内存; cinnamon版需要至少 2G ；
+- XFCE 版需要至少 1G 内存; cinnamon版需要至少 2G ；
 - 这意味着如果你在虚拟机里运行，请为其设置足够的内存，而虚拟机的宿主机至少要有 4G 物理内存。
 - 经测试，有的电脑是 (U)EFI, 并不买本系统的 bootloader (syslinux + grub2) 的帐，如果遇到这种情况请选择传统 BIOS 或带 CSM 的 EFI的电脑使用，或者在虚拟机里使用（并请告诉我 Orz）。
 
@@ -69,6 +69,7 @@ _最后更新：2017.10.01 15:30_
 
 ## Change Log
 
+- 2017.10.04	新增了 Tor-messenger 和 Lantern蓝灯（注：蓝灯并非在所有地区都有效）。
 - 2017.10.03	加入了藏文（bo_IN, bo_CN）和维吾尔文（ug_CN）的显示支持（注：目前来说维吾尔文支持较好，而有些应用/桌面没有藏文的翻译项目，还需要更多藏语使用者对各应用和桌面（如 XFCE）提供翻译。）  
 - 2017.09.30	更新一些自添加的软件：Tor-nonprism（修复防火墙规则）；Icecat-hardened（用户配置改为无痕浏览和默认socks5代理（不过启动两次浏览器才生效））；升级 shadowsocks-libev至3.1.0；新增 Signal-Desktop；Libreoffice 新增中文包，即界面默认为中文了；新增ssr脚本和 ss-redir透明代理脚本（详情见《用户手册》）。
 - 2017.09.24	上游更新（包括添加了 python 3.6）

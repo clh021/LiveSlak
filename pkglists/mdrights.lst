@@ -23,9 +23,12 @@ macchiato
 tor
 tor-hardened
 tor-browser
+tor-messenger
 torsocks
 privoxy
 proxychains
+telegram
+
 udns
 mbedtls
 libsodium
@@ -33,8 +36,12 @@ pcre2
 c-ares
 libev
 shadowsocks-libev
-telegram
 
+json-glib
+libappindicator
+libdbusmenu
+libindicator
+lantern
 
 ## 写写字
 libreoffice
