@@ -9,7 +9,7 @@ set -e
 
 if [ -f /home/live/Desktop/ssr.json ]; then
 
-	nohup /usr/bin/python /opt/shadowsocksr/shadowsocks/local.py --user nobody -c /home/live/Desktop/ss-libev.json a>>/var/log/ssr.log &
+	nohup /usr/bin/python /opt/shadowsocksr/shadowsocks/local.py --user nobody -c /home/live/Desktop/ssr.json a>>/$HOME/ssr.log &
 	RES=$?
 	if [ "$?" = 0 ]; then echo "ssr has been started successfully."; fi
 

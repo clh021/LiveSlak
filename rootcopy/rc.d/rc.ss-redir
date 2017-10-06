@@ -15,7 +15,7 @@ if [ -f /home/live/Desktop/ss-libev.json ]; then
 	# Start ss-redir
 	/usr/bin/ss-redir -a nobody -u -c /home/live/Desktop/ss-libev.json -f /var/run/shadowsocks.pid
 	RES=$?
-	if [ "$?" = 0 ]; then echo "ss-redir has been started successfully."; fi
+	if [ "$RES" = 0 ]; then echo "ss-redir has been started successfully."; fi
 
 else
 	echo "We didn't find your .json file for Shadowsocks! Please put it on Desktop and name it as ss-libev.json."
