@@ -32,7 +32,7 @@ telegram
 udns
 mbedtls
 libsodium
-pcre2
+#pcre2     # Already exists in official repo.
 c-ares
 libev
 shadowsocks-libev
