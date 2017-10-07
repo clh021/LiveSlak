@@ -15,12 +15,12 @@ _最后更新：2017.10.06 18:30_
 
 - 下载地址 _（可能会因更新而变动）_：
   - 包含：
-    - Xfce 版（1006; 最小安装版）
+    - Xfce 版（1007; 最小安装版）
 	- https://sourceforge.net/projects/liveslak-atgfw/files/iso/
-	- md5sum: bbce08f1b759bcdaee74ae422be63f6d
-    - cinnamon 版 (0930)
+	- md5sum: eac828a984ba5eb202b052b02ae5852d
+    - cinnamon 版 (1007)
 	- https://sourceforge.net/projects/liveslak-atgfw/files/iso/
-	- md5sum: b1bf2a0cc5f8d5d01792ff4d7cd9decd
+	- md5sum: fd25243f16563e95cae13c65cf22a79d
 
 
 <hr>
@@ -57,7 +57,7 @@ _最后更新：2017.10.06 18:30_
 
 ## Change Log
 
-- 2017.10.06	暂时**移除**蓝灯（因为发现其在用阿里云的海外服务器，可信度大大降低）；新增 `v2ray`。  
+- 2017.10.07	暂时**移除**蓝灯（因为发现其在用阿里云的海外服务器，可信度大大降低）；新增 `v2ray`；修复ssr/ss-libev脚本的bugs。  
 - 2017.10.04	新增了 Tor-messenger 和 Lantern蓝灯（注：蓝灯并非在所有地区都有效）。
 - 2017.10.03	加入了藏文（bo_IN, bo_CN）和维吾尔文（ug_CN）的显示支持（注：目前来说维吾尔文支持较好，而有些应用/桌面没有藏文的翻译项目，还需要更多藏语使用者对各应用和桌面（如 XFCE）提供翻译。）  
 - 2017.09.30	更新一些自添加的软件：Tor-nonprism（修复防火墙规则）；Icecat-hardened（用户配置改为无痕浏览和默认socks5代理（不过启动两次浏览器才生效））；升级 shadowsocks-libev至3.1.0；新增 Signal-Desktop；Libreoffice 新增中文包，即界面默认为中文了；新增ssr脚本和 ss-redir透明代理脚本（详情见《用户手册》）。
