@@ -28,6 +28,7 @@ torsocks
 privoxy
 proxychains
 telegram
+riot-web
 
 udns
 mbedtls
@@ -37,6 +38,14 @@ c-ares
 libev
 shadowsocks-libev
 v2ray
+
+# qTox 基于p2p的抗审查通讯工具
+libfilteraudio
+qrencode
+sqlcipher
+opus
+c-toxcore
+qTox
 
 # 蓝灯使用阿里云服务器，不可信
 #json-glib
