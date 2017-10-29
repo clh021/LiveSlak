@@ -40,6 +40,8 @@ shadowsocks-libev
 v2ray
 
 # qTox 基于p2p的抗审查通讯工具
+qt5
+OpenAL
 libfilteraudio
 qrencode
 sqlcipher
