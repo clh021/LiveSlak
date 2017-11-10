@@ -3,7 +3,7 @@
 > Forked from Alien Bob's powerful building script for Slackware Live. Thank you, Alien !    
 > 本套脚本 forked 自 [Alien Bob 大牛](http://www.slackware.com/%7Ealien/liveslak/), git://bear.alienbase.nl/liveslak.git
 
-_最后更新：2017.10.29 18:30_    
+_最后更新：2017.11.10_    
 
 构建我自己的 Live 发行版 （基于 Slackware）。主要侧重：
   - 中文化
@@ -14,13 +14,12 @@ _最后更新：2017.10.29 18:30_
 ## Download
 
 - 下载地址 _（可能会因更新而变动）_：
+	- https://sourceforge.net/projects/liveslak-atgfw/files/iso/
   - 包含：
-    - Xfce 版（1026; 最小安装版）
-	- https://sourceforge.net/projects/liveslak-atgfw/files/iso/
-	- md5sum: 2f5ab2bc465c80923d3176b2b4761442 
-    - cinnamon 版 (1028)
-	- https://sourceforge.net/projects/liveslak-atgfw/files/iso/
-	- md5sum: 24a25992a9e09f5bff1a25a527471faa
+    - Xfce 版（0.1110; 最小安装版, 1.1GB）
+	- md5sum: 778a71ffd4b3679febadde578972f62c
+    - cinnamon 版 (0.1110; 2.5GB)
+	- md5sum: 4d5a8d4c43675025ef3cac49477584e4
 
 
 <hr>
@@ -57,7 +56,8 @@ _最后更新：2017.10.29 18:30_
 
 ## Change Log
 
-- 2017.10.28	纳入官方10.20更新（包括wpa_supplicant安全更新）；新增 Riot 客户端，qTox 客户端（p2p分布式通讯应用）；	
+- 2017.11.08	更新 Tor (3.2.3-alpha), Tor Browser(7.0.9), Icecat(52.3.0), Icecat-hardened（安装后即可用插件了：Noscript, HTTPSeverywhere, Privacy Badger，和中文语言包）; XFCE版去除了 GIMP（减轻重量），CINNAMON版增加了 youtube-dl（油管下载神器）；官方更新跟进（eg -> Firefox 56).  
+- 2017.10.28	跟进官方10.20更新（包括wpa_supplicant安全更新）；新增 Riot 客户端，qTox 客户端（p2p分布式通讯应用）；	
 - 2017.10.07	暂时**移除**蓝灯（因为发现其在用阿里云的海外服务器，可信度大大降低）；新增 `v2ray`；修复ssr/ss-libev脚本的bugs。  
 - 2017.10.04	新增了 Tor-messenger 和 Lantern蓝灯（注：蓝灯并非在所有地区都有效）。
 - 2017.10.03	加入了藏文（bo_IN, bo_CN）和维吾尔文（ug_CN）的显示支持（注：目前来说维吾尔文支持较好，而有些应用/桌面没有藏文的翻译项目，还需要更多藏语使用者对各应用和桌面（如 XFCE）提供翻译。）  
