@@ -23,14 +23,14 @@ audiofile
 babl
 bdftopcf
 bigreqsproto
-bluez
+#bluez
 boost
 cairo
 cdrtools
 cgmanager
 compositeproto
-cups
-cups-filters
+#cups
+#cups-filters
 damageproto
 db48
 dbus

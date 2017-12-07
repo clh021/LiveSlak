@@ -1324,12 +1324,12 @@ EOT
 #EOT
 
 # If we added slackpkg+ for easier system management, let's configure it too.
-# Update the cache for slackpkg:
-echo "-- Creating slackpkg cache, takes a few seconds..."
-chroot "${LIVE_ROOTDIR}" /bin/bash <<EOSL 2>${DBGOUT}
+# Update the cache for slackpkg: -- Don't do this. by MDrights 
+echo "-- Don't Creating slackpkg cache, takes a few seconds..."
+# chroot "${LIVE_ROOTDIR}" /bin/bash <<EOSL 2>${DBGOUT}
 
-if [ -f var/log/packages/slackpkg+-* ] ; then
-  cat <<EOPL > etc/slackpkg/slackpkgplus.conf
+#if [ -f var/log/packages/slackpkg+-* ] ; then
+#  cat <<EOPL > etc/slackpkg/slackpkgplus.conf
 SLACKPKGPLUS=on
 VERBOSE=1
 ALLOW32BIT=off
@@ -1345,15 +1345,15 @@ MIRRORPLUS['alienbob']=http://bear.alienbase.nl/mirrors/people/alien/sbrepos/${S
 MIRRORPLUS['ktown']=http://bear.alienbase.nl/mirrors/alien-kde/${SL_VERSION}/latest/${SL_ARCH}/
 MIRRORPLUS['mate']=http://slackware.uk/msb/${SL_VERSION}/latest/${SL_ARCH}/ 
 #MIRRORPLUS['studioware']=http://slackware.uk/studioware/${SL_VERSION}/ 
-EOPL
-fi
+#EOPL
+#fi
 
-ARCH=${SL_ARCH} /usr/sbin/slackpkg -batch=on update gpg
-ARCH=${SL_ARCH} /usr/sbin/slackpkg -batch=on update
+#ARCH=${SL_ARCH} /usr/sbin/slackpkg -batch=on update gpg
+#ARCH=${SL_ARCH} /usr/sbin/slackpkg -batch=on update
 # Let any lingering .new files replace their originals:
-yes o | ARCH=${SL_ARCH} /usr/sbin/slackpkg new-config
+#yes o | ARCH=${SL_ARCH} /usr/sbin/slackpkg new-config
 
-EOSL
+#EOSL
 
 if [ -f ${LIVE_ROOTDIR}/etc/rc.d/rc.networkmanager ]; then
   # Enable NetworkManager if present, and thus disable the default:
@@ -2202,9 +2202,9 @@ cp -a ${LIVE_TOOLDIR}/syslinux ${LIVE_STAGING}/boot/
 
 # EFI support always for 64bit architecture, but conditional for 32bit.
 if [ "$SL_ARCH" = "x86_64" -o "$EFI32" = "YES" ]; then
-  # Copy the UEFI boot directory structure:
+  # Copy the UEFI boot directory structure: -- add my own .efi binary, by MDrights.
   mkdir -p ${LIVE_STAGING}/EFI/BOOT
-  cp -a ${LIVE_TOOLDIR}/EFI/BOOT/{grub-embedded.cfg,make-grub.sh,*.txt,theme} ${LIVE_STAGING}/EFI/BOOT/
+  cp -a ${LIVE_TOOLDIR}/EFI/BOOT/{grub-embedded.cfg,make-grub.sh,*.txt,theme,*.efi} ${LIVE_STAGING}/EFI/BOOT/
   if [ "$LIVEDE" = "XFCE" ]; then
     # We do not use the unicode font, so it can be removed to save space:
     rm -f ${LIVE_STAGING}/EFI/BOOT/theme/unicode.pf2

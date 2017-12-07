@@ -1,17 +1,17 @@
 Cython
 MPlayer
 atkmm
-audacious
-audacious-plugins
-blueman
+#audacious
+#audacious-plugins
+#blueman
 cairomm
 fltk
 geeqie
 #gftp
 #gimp     # to shrink
-gkrellm
+#gkrellm
 glibmm
-gnuchess
+#gnuchess
 gtkmm3
 gucharmap
 gv
@@ -29,12 +29,12 @@ pidgin
 rdesktop
 #rxvt
 sane
-seamonkey-solibs
+#seamonkey-solibs
 #tigervnc
 vim
 vim-gvim
 x11-ssh-askpass
-x3270
+#x3270
 #xaos
 #xfractint
 xgames
