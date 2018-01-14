@@ -40,22 +40,24 @@ _最后更新：2017.12.08_
 ## My modification
 
 - 519: Change the default locale in the first option on the syslinux boot menu, to zh; and delete the option/submenus for non-US keyboard.
-- 1366 & #1896: chmod a bunch of rc files as to disable them starting in booting: e.g. bluetooth,rpc,cups. If NetworkManager is installed, disabling inet1 and wireless as well.
+- 1366 & 1896: chmod a bunch of rc files as to disable them starting in booting: e.g. bluetooth,rpc,cups. If NetworkManager is installed, disabling inet1 and wireless as well.
 - 2248: Enabling the addons/ & optional/ directories under XFCE mode (substituted by SLACKWARE)
 - 167+: Remove some serials of Slackware repo in the tagfiles strings of MATE and CINNAMON.
 - 1295: Add user account for Tor.
 - 1591: Disable most of the KDE4 configuration (for X system) when not building for KDE4 type.
 - Custom_config: Add my configuration files to the system, which can be put under such paradigm:    
-  - skel/skel*.txz : any files except skel-xfce.txz in it will be put to $HOME under **every desktopType except XFCE** which only parse skel-xfce.txz;
+  - skel/skel\*.txz : any files except skel-xfce.txz in it will be put to $HOME under **every desktopType except XFCE** which only parse skel-xfce.txz;
   - rootcopy/ : now we can have **etc-x.txz** & **opt-x.txz** that can be parsed to /etc and /opt respectively. (otherwise seems rootcopy/ doesn't work)  
 - ....: Add Chinese (simp, trad, Cantonese) encodings options on the bootup screen.
 - Add my own pkglist: mdrights{.conf,.lst} 
     - 增加了的包绝大多数为自己编译，列表在：https://github.com/mdrights/LiveSlak/blob/mdrights/pkglists/mdrights.lst
     - 您有何提议可以发issue告诉我喔～
     - 如果希望在线获得这些软件包，我可以考虑在线共享（但仍建议你自己编译）。
+- Hard-coded $KVER in line 2101, in order to let my sel-built kernel work. Also, my self-built kernel packages replaced with the same-name ones in `Slackware-repo` in my machine. The result seems to show that the kernel-generic was the one it used in place (I replaced both generic and huge packages with the same kernel built based on huge-4.9.66). I didn't build kernel-headers. And it was only successful that the kernel-modules package installed while the modules were installed via the kernel-[generic|huge] packages already. So I made kernel-modules package as a meta-package (empty but only a text in /lib/modules ). There's no need to touch tagfiles and pkglist/min.lst.   
 
 ## Change Log
 
+- 2018.01.14	use my self-built kernel: 4.9.76 which was directly from kernel.org as the patched and updated version in response to Meltdown and Spectre. Updated Tor (0.3.2.9) 
 - 2017.12.08	新增：Shadowsocks（原版，2.9.1）；更新：v2ray（3.0.1），Tor（0.3.2.6-alpha）；系统官方更新（内核 4.9.66）  
 - 2017.11.10	更新 Tor (3.2.3-alpha), Tor Browser(7.0.9), Icecat(52.3.0), Icecat-hardened（安装后即可用插件了：Noscript, HTTPSeverywhere, Privacy Badger，和中文语言包）; XFCE版去除了 GIMP（减轻重量），CINNAMON版增加了 youtube-dl（油管下载神器）；官方更新跟进（eg -> Firefox 56).  
 - 2017.10.28	跟进官方10.20更新（包括wpa_supplicant安全更新）；新增 Riot 客户端，qTox 客户端（p2p分布式通讯应用）；	
