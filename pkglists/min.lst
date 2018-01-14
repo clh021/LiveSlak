@@ -58,8 +58,9 @@ iptables
 iputils
 kbd
 kernel-generic
+# kernel-huge  ## added by MDrights.
 kernel-firmware
-kernel-headers
+# kernel-headers
 kernel-modules
 kmod
 less
