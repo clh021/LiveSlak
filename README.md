@@ -3,7 +3,7 @@
 > Forked from Alien Bob's powerful building script for Slackware Live. Thank you, Alien !    
 > 本套脚本 forked 自 [Alien Bob 大牛](http://www.slackware.com/%7Ealien/liveslak/), git://bear.alienbase.nl/liveslak.git
 
-_最后更新：2017.12.08_    
+_最后更新：2018.01.14_    
 
 构建我自己的 Live 发行版 （基于 Slackware）。主要侧重：
   - 中文化
@@ -16,10 +16,10 @@ _最后更新：2017.12.08_
 - 下载地址 _（可能会因更新而变动）_：
 	- https://sourceforge.net/projects/liveslak-atgfw/files/iso/
   - 包含：
-    - Xfce 版（0.1208; 最小安装版, 1.1GB）
-	- md5sum: 778a71ffd4b3679febadde578972f62c
-    - cinnamon 版 (0.1208; 2.5GB)
-	- md5sum: 4d5a8d4c43675025ef3cac49477584e4
+    - Xfce 版（ 最小安装版, 1.1GB）
+	- md5sum: 781a89e3be964d729caf23092f0e375a
+    - cinnamon 版 ( 2.5GB)
+	- md5sum: c23c87c40b5c8392293a7312f66bc5c6
 
 
 <hr>
