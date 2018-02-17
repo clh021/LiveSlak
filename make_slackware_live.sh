@@ -2098,7 +2098,7 @@ else
 fi
 
 # MOD by MDrights
-KVER="4.9.76"
+KVER="4.9.81"
 
 # Create an initrd for the generic kernel, using a modified init script:
 echo "-- Creating initrd for kernel-generic $KVER ..."

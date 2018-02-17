@@ -2,7 +2,7 @@
 ## Only install on the flavors other than XFCE.
 NetworkManager-openconnect
 NetworkManager-openvpn
-calibre
+#calibre
 #chromium
 #chromium-pepperflash-plugin
 #chromium-widevine-plugin

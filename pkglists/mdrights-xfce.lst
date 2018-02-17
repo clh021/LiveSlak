@@ -60,12 +60,12 @@ wipe
 secure-delete
 
 ## 这些只提供在cinnamon版里（因为需要的依赖包比较大/多）
-#keepassx 
-#jitsi
-#nodejs
-#nwjs
-#rubygem-sass
-#Signal-Desktop
+keepassx 
+jitsi
+nodejs
+nwjs
+rubygem-sass
+Signal-Desktop
 
 ## 支持中文的终端 (useful for cinnamon)
 #rxvt-unicode
