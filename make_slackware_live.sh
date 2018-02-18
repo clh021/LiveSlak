@@ -95,7 +95,8 @@ LIVE_HOSTNAME=${LIVE_HOSTNAME:-"darkstar"}
 
 # What type of Live image?
 # Choices are: SLACKWARE, XFCE, KDE4, PLASMA5, MATE, CINNAMON, DLACK, STUDIOWARE
-LIVEDE=${LIVEDE:-"SLACKWARE"}
+# LIVEDE=${LIVEDE:-"SLACKWARE"}    # MOD by mdrights: should be null if it's not selected.
+LIVEDE=""
 
 # What runlevel to use if adding a DE like: XFCE, KDE4, PLASMA5 etc...
 RUNLEVEL=${RUNLEVEL:-4}
@@ -118,7 +119,7 @@ WAIT=${WAIT:-"5"}
 #
 
 # Who built the live image:
-BUILDER=${BUILDER:-"MDrights"}
+BUILDER=${BUILDER:-"alien"}
 
 # Console font to use with syslinux for better language support:
 CONSFONT=${CONSFONT:-"ter-i16v.psf"}

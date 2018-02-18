@@ -15,8 +15,9 @@ NetworkManager-openvpn
 gst-plugins-ffmpeg0
 gst-plugins-libav
 #keepassx  (don't install since I make my own)
-#libreoffice (the same)
+libreoffice
 #libreoffice-dict-en
+libreoffice-l10n-zh_CN
 libstatgrab
 #libtinfo
 #nodejs
@@ -29,7 +30,7 @@ python-twisted
 #sshfs-fuse
 unrar
 #veracrypt	# I had already built it.
-#vlc
+vlc
 
 # LXQT deps:
 # If you are making a standalone LXQT Live ISO, then please note that LXQT
