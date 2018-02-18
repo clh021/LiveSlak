@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Shadowsocks透明代理（试验）
-Comment[En]=Start ss as transparent proxy to let all apps go throught GFW!
-Exec=su -c '/etc/rc.d/rc.ss-redir'
-Icon=telegram
-Type=Application
-Categories=System
-Terminal=true

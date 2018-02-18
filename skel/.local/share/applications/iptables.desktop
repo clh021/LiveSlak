@@ -4,5 +4,5 @@ Comment[En]=Start Iptables Firewall
 Exec=su -c '/etc/rc.d/rc.firewall start'
 Icon=utilities-system-monitor
 Type=Application
-Categories=System
+Categories=Network
 Terminal=true

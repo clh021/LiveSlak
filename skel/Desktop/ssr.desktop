@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=SSR
-Comment[En]=Start SSR to break the wall!
-Exec=bash /etc/rc.d/rc.ssr
-Icon=telegram
-Type=Application
-Categories=System
-Terminal=true

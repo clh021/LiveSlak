@@ -6,6 +6,6 @@ Comment[zh_HK]=加强版Tor网络
 Exec=su -c /opt/tor-hardened/tor-hardened.sh
 Icon=tor-browser
 Type=Application
-Categories=Network
+Categories=X-Antigfw
 Terminal=true
 
