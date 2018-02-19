@@ -3,7 +3,7 @@
 > Forked from Alien Bob's powerful building script for Slackware Live. Thank you, Alien !    
 > 本套脚本 forked 自 [Alien Bob 大牛](http://www.slackware.com/%7Ealien/liveslak/), git://bear.alienbase.nl/liveslak.git
 
-_最后更新：2018.01.14_    
+_最后更新：2018.02.19_    
 
 构建我自己的 Live 发行版 （基于 Slackware）。主要侧重：
   - 中文化
@@ -15,11 +15,8 @@ _最后更新：2018.01.14_
 
 - 下载地址 _（可能会因更新而变动）_：
 	- https://sourceforge.net/projects/liveslak-atgfw/files/iso/
-  - 包含：
-    - Xfce 版（ 最小安装版, 1.1GB）
-	- md5sum: 781a89e3be964d729caf23092f0e375a
-    - cinnamon 版 ( 2.5GB)
-	- md5sum: c23c87c40b5c8392293a7312f66bc5c6
+  - 自 2018.02 (新版本号，代号：ATGFW，声援甄江华并支持他和伙伴的网站) 开始只发布带 XFCE桌面的完整版（大小：1988100096 B）
+	- md5sum: 39db36c7e4895c5dc18eb6b30a3229ec
 
 
 <hr>
@@ -32,9 +29,9 @@ _最后更新：2018.01.14_
 ## Device Requirements
 
 - 您的机器必须是 x86_64位的啦；
-- XFCE 版需要至少 1G 内存; cinnamon版需要至少 2G ；
+- 需要至少 1G 内存；
 - 这意味着如果你在虚拟机里运行，请为其设置足够的内存，而虚拟机的宿主机至少要有 4G 物理内存。
-- 经测试，有的电脑是 (U)EFI, 并不买本系统的 bootloader (syslinux + grub2) 的帐，如果遇到这种情况请选择传统 BIOS 或带 CSM 的 EFI的电脑使用，或者在虚拟机里使用（并请告诉我 Orz）。
+- 经测试，有的电脑只有 (U)EFI（主板启动固件）, Slackware 的 bootloader (syslinux + grub2) 可能无法广泛地支持所有 UEFI。如果遇到机器无法识别本系统的U盘——这情况请选择传统 BIOS 或带 CSM 的 EFI的电脑使用，或者在虚拟机里使用（并请告诉我 Orz）。
 
 
 ## My modification
@@ -57,6 +54,7 @@ _最后更新：2018.01.14_
 
 ## Change Log
 
+- 2018.02.19	大更新：内核 4.9.81（CPU两漏洞补丁上游已完善）；Tor浏览器-> 7.5，Shadowsocks-libev -> 3.1.3, v2ray -> 3.9, Riot.im -> 0.13.5, Telegram 1.2.6, etc.; 抛弃cinnamon，拥抱xfce，用了自定义的 pkglist -> xfce 安装了完整的 slackware官方包了；重整了xfce菜单，重要软件的菜单项添加中文，并归到独自的子菜单：「翻越长城」和「数据保护」； 自制的 ATGFW 桌面（声援甄江华并支持他和伙伴的网站）
 - 2018.01.14	use my self-built kernel: 4.9.76 which was directly from kernel.org as the patched and updated version in response to Meltdown and Spectre. Updated Tor (0.3.2.9) 
 - 2017.12.08	新增：Shadowsocks（原版，2.9.1）；更新：v2ray（3.0.1），Tor（0.3.2.6-alpha）；系统官方更新（内核 4.9.66）  
 - 2017.11.10	更新 Tor (3.2.3-alpha), Tor Browser(7.0.9), Icecat(52.3.0), Icecat-hardened（安装后即可用插件了：Noscript, HTTPSeverywhere, Privacy Badger，和中文语言包）; XFCE版去除了 GIMP（减轻重量），CINNAMON版增加了 youtube-dl（油管下载神器）；官方更新跟进（eg -> Firefox 56).  
