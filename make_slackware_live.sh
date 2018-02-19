@@ -1580,15 +1580,15 @@ echo "-- Configuring XFCE."
 
 # Prepare some XFCE defaults for the 'live' user and any new users.
 # (don't show icons on the desktop for irrelevant stuff).
-# Also, allow other people to add their own custom skel*.txz archives:
+# Also, allow other people to add their own custom skel*.txz archives: (MOD by MDrights)
 
-if [ "$LIVEDE" = "XFCE" ]; then
+#if [ "$LIVEDE" = "XFCE" ]; then			# Other LIVEDE should contain skel*.txz
   mkdir -p ${LIVE_ROOTDIR}/etc/skel/
 #    for SKEL in ${LIVE_TOOLDIR}/skel/skel*.txz ; do
 	SKEL="${LIVE_TOOLDIR}/skel/skel-xfce.txz"
   	tar -xf ${SKEL} -C ${LIVE_ROOTDIR}/etc/skel/
 #    done
-fi
+#fi
 
 if [ "$LIVEDE" = "KDE4" ]; then
 # -------------------------------------------------------------------------- #
@@ -1884,7 +1884,7 @@ fi
 # Configure the default runlevel:
 sed -i ${LIVE_ROOTDIR}/etc/inittab -e "s/\(id:\).\(:initdefault:\)/\1${RUNLEVEL}\2/"
 
-# Disable unneeded/unwanted services:
+# Disable unneeded/unwanted services:		# MOD by MDrights
 [ -f ${LIVE_ROOTDIR}/etc/rc.d/rc.acpid ] && chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.acpid
 [ -f ${LIVE_ROOTDIR}/etc/rc.d/rc.pcmcia ] && chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.pcmcia
 [ -f ${LIVE_ROOTDIR}/etc/rc.d/rc.pulseaudio ] && chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.pulseaudio
