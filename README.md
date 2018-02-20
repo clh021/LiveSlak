@@ -23,34 +23,18 @@ _最后更新：2018.02.19_
 
 ## Usage
 
-- 如果你是**最终用户**，请阅读：[LiveSlak 最终用户介绍](https://mdrights.github.io/os-observe/Liveslak-intro/)
-- 《用户手册》：[https://mdrights.github.io/os-observe/docs/LiveSlak-Users-Guide.html](https://mdrights.github.io/os-observe/docs/LiveSlak-Users-Guide.html)    
+- 如果你是**最终用户**，请阅读：    
+	- [LiveSlak 最终用户介绍](https://mdrights.github.io/os-observe/Liveslak-intro/)
+	- [《用户手册》](https://github.com/mdrights/LiveSlak/blob/mdrights/LiveSlak-Users-Guide.md)
 
 ## Device Requirements
 
 - 您的机器必须是 x86_64位的啦；
-- 需要至少 1G 内存；
+- 需要至少 2G 内存；
 - 这意味着如果你在虚拟机里运行，请为其设置足够的内存，而虚拟机的宿主机至少要有 4G 物理内存。
 - 经测试，有的电脑只有 (U)EFI（主板启动固件）, Slackware 的 bootloader (syslinux + grub2) 可能无法广泛地支持所有 UEFI。如果遇到机器无法识别本系统的U盘——这情况请选择传统 BIOS 或带 CSM 的 EFI的电脑使用，或者在虚拟机里使用（并请告诉我 Orz）。
 
 
-## My modification
-
-- 519: Change the default locale in the first option on the syslinux boot menu, to zh; and delete the option/submenus for non-US keyboard.
-- 1366 & 1896: chmod a bunch of rc files as to disable them starting in booting: e.g. bluetooth,rpc,cups. If NetworkManager is installed, disabling inet1 and wireless as well.
-- 2248: Enabling the addons/ & optional/ directories under XFCE mode (substituted by SLACKWARE)
-- 167+: Remove some serials of Slackware repo in the tagfiles strings of MATE and CINNAMON.
-- 1295: Add user account for Tor.
-- 1591: Disable most of the KDE4 configuration (for X system) when not building for KDE4 type.
-- Custom_config: Add my configuration files to the system, which can be put under such paradigm:    
-  - skel/skel\*.txz : any files except skel-xfce.txz in it will be put to $HOME under **every desktopType except XFCE** which only parse skel-xfce.txz;
-  - rootcopy/ : now we can have **etc-x.txz** & **opt-x.txz** that can be parsed to /etc and /opt respectively. (otherwise seems rootcopy/ doesn't work)  
-- ....: Add Chinese (simp, trad, Cantonese) encodings options on the bootup screen.
-- Add my own pkglist: mdrights{.conf,.lst} 
-    - 增加了的包绝大多数为自己编译，列表在：https://github.com/mdrights/LiveSlak/blob/mdrights/pkglists/mdrights.lst
-    - 您有何提议可以发issue告诉我喔～
-    - 如果希望在线获得这些软件包，我可以考虑在线共享（但仍建议你自己编译）。
-- Hard-coded $KVER in line 2101, in order to let my sel-built kernel work. Also, my self-built kernel packages replaced with the same-name ones in `Slackware-repo` in my machine. The result seems to show that the kernel-generic was the one it used in place (I replaced both generic and huge packages with the same kernel built based on huge-4.9.66). I didn't build kernel-headers. And it was only successful that the kernel-modules package installed while the modules were installed via the kernel-[generic|huge] packages already. So I made kernel-modules package as a meta-package (empty but only a text in /lib/modules ). There's no need to touch tagfiles and pkglist/min.lst.   
 
 ## Change Log
 
@@ -73,6 +57,24 @@ _最后更新：2018.02.19_
 - 2017.09.04	First beta point release: firewall startup added to rc.local/rc.local_shutdown (but found conflicted with xdm)
 - 2017.09.03	First beta release:	Tor user account added; Firewall rc script added; ShadowsockR added in /opt.
 - 2017.08.27	First beta pre-release: basic feature done (but Tor un-functionable)
+
+## My modification
+
+- 519: Change the default locale in the first option on the syslinux boot menu, to zh; and delete the option/submenus for non-US keyboard.
+- 1366 & 1896: chmod a bunch of rc files as to disable them starting in booting: e.g. bluetooth,rpc,cups. If NetworkManager is installed, disabling inet1 and wireless as well.
+- 2248: Enabling the addons/ & optional/ directories under XFCE mode (substituted by SLACKWARE)
+- 167+: Remove some serials of Slackware repo in the tagfiles strings of MATE and CINNAMON.
+- 1295: Add user account for Tor.
+- 1591: Disable most of the KDE4 configuration (for X system) when not building for KDE4 type.
+- Custom_config: Add my configuration files to the system, which can be put under such paradigm:    
+  - skel/skel\*.txz : any files except skel-xfce.txz in it will be put to $HOME under **every desktopType except XFCE** which only parse skel-xfce.txz;
+  - rootcopy/ : now we can have **etc-x.txz** & **opt-x.txz** that can be parsed to /etc and /opt respectively. (otherwise seems rootcopy/ doesn't work)  
+- ....: Add Chinese (simp, trad, Cantonese) encodings options on the bootup screen.
+- Add my own pkglist: mdrights{.conf,.lst} 
+    - 增加了的包绝大多数为自己编译，列表在：https://github.com/mdrights/LiveSlak/blob/mdrights/pkglists/mdrights.lst
+    - 您有何提议可以发issue告诉我喔～
+    - 如果希望在线获得这些软件包，我可以考虑在线共享（但仍建议你自己编译）。
+- Hard-coded $KVER in line 2101, in order to let my sel-built kernel work. Also, my self-built kernel packages replaced with the same-name ones in `Slackware-repo` in my machine. The result seems to show that the kernel-generic was the one it used in place (I replaced both generic and huge packages with the same kernel built based on huge-4.9.66). I didn't build kernel-headers. And it was only successful that the kernel-modules package installed while the modules were installed via the kernel-[generic|huge] packages already. So I made kernel-modules package as a meta-package (empty but only a text in /lib/modules ). There's no need to touch tagfiles and pkglist/min.lst.   
 
 ## TODO
 
@@ -102,6 +104,7 @@ _最后更新：2018.02.19_
 构建脚本的详细介绍和使用方法请见 Alien的 [README.txt](https://github.com/mdrights/LiveSlak/blob/mdrights/README.txt)   
 
 **交流反饋**：這裏發issue，或 IRC/Matrix: #DigitalrightsCN; TG頻道：https://t.me/liveslak ; 或 群组: https://t.me/joinchat/EMyvPA4M5YBESP74ID9qIA    
+
 
 
 ==============================================================================   
