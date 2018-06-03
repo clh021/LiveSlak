@@ -3,13 +3,15 @@
 > Forked from Alien Bob's powerful building script for Slackware Live. Thank you, Alien !    
 > 本套脚本 forked 自 [Alien Bob 大牛](http://www.slackware.com/%7Ealien/liveslak/), git://bear.alienbase.nl/liveslak.git
 
-_最后更新：2018.02.19_    
 
 构建我自己的 Live 发行版 （基于 Slackware）。主要侧重：
   - 中文化
   - 隐私加强
     - 隐私保护和墙国特色信息/通讯自由相关的应用
     - 系统加固（包括：防火墙、文件系统加固等……）
+
+_最后更新：2018.02.19 (现在处于休眠期，可能半年更一次，但会发些新闻和软件更新: https://t.me/liveslak )_    
+
 
 ## Download
 
@@ -111,7 +113,7 @@ _最后更新：2018.02.19_
 <hr>
 构建脚本的详细介绍和使用方法请见 Alien的 [README.txt](https://github.com/mdrights/LiveSlak/blob/mdrights/README.txt)   
 
-**交流反饋**：這裏發issue，或 IRC/Matrix: #DigitalrightsCN; TG頻道：https://t.me/liveslak ; 或 群组: https://t.me/joinchat/EMyvPA4M5YBESP74ID9qIA    
+**交流反饋**：這裏發issue，或 IRC/Matrix: #DigitalrightsCN; TG頻道：https://t.me/liveslak ; 或 群组:  https://t.me/liveslackware   
 
 
 
