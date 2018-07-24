@@ -10,12 +10,16 @@
     - 隐私保护和墙国特色信息/通讯自由相关的应用
     - 系统加固（包括：防火墙、文件系统加固等……）
 
-_最后更新：2018.02.19 (现在处于休眠期，可能半年更一次，但会发些新闻和软件更新: https://t.me/liveslak )_    
+最后更新：2018.02.19   
+
+**(现在处于休眠期，使用者請前往 [新的 live 隱私增強操作系統：antiG](https://github.com/mdrights/antiG))**
+
+發佈頻道：		https://t.me/liveslak    
 
 
 ## Download
 
-- 下载地址 _（可能会因更新而变动）_：
+- 下载地址 
 	- https://sourceforge.net/projects/liveslak-atgfw/files/iso/
   - 自 2018.02 (新版本号，代号：ATGFW，声援甄江华并支持他和伙伴的网站) 开始只发布带 XFCE桌面的完整版（大小：1988100096 B）
 	- md5sum: 39db36c7e4895c5dc18eb6b30a3229ec
