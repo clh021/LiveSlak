@@ -1331,20 +1331,20 @@ echo "-- Don't Creating slackpkg cache, takes a few seconds..."
 
 #if [ -f var/log/packages/slackpkg+-* ] ; then
 #  cat <<EOPL > etc/slackpkg/slackpkgplus.conf
-SLACKPKGPLUS=on
-VERBOSE=1
-ALLOW32BIT=off
-USEBL=1
-WGETOPTS="--timeout=20 --tries=2"
-GREYLIST=on
-PKGS_PRIORITY=( restricted alienbob ktown mate )
-REPOPLUS=( slackpkgplus restricted alienbob ktown mate )
-MIRRORPLUS['slackpkgplus']=http://slakfinder.org/slackpkg+/
-MIRRORPLUS['restricted']=http://bear.alienbase.nl/mirrors/people/alien/restricted_sbrepos/${SL_VERSION}/${SL_ARCH}/
-MIRRORPLUS['alienbob']=http://bear.alienbase.nl/mirrors/people/alien/sbrepos/${SL_VERSION}/${SL_ARCH}/
-#MIRRORPLUS['ktown_testing']=http://bear.alienbase.nl/mirrors/alien-kde/${SL_VERSION}/testing/${SL_ARCH}/
-MIRRORPLUS['ktown']=http://bear.alienbase.nl/mirrors/alien-kde/${SL_VERSION}/latest/${SL_ARCH}/
-MIRRORPLUS['mate']=http://slackware.uk/msb/${SL_VERSION}/latest/${SL_ARCH}/ 
+# SLACKPKGPLUS=on
+# VERBOSE=1
+# ALLOW32BIT=off
+# USEBL=1
+# WGETOPTS="--timeout=20 --tries=2"
+# GREYLIST=on
+# PKGS_PRIORITY=( restricted alienbob ktown mate )
+# REPOPLUS=( slackpkgplus restricted alienbob ktown mate )
+# MIRRORPLUS['slackpkgplus']=http://slakfinder.org/slackpkg+/
+# MIRRORPLUS['restricted']=http://bear.alienbase.nl/mirrors/people/alien/restricted_sbrepos/${SL_VERSION}/${SL_ARCH}/
+# MIRRORPLUS['alienbob']=http://bear.alienbase.nl/mirrors/people/alien/sbrepos/${SL_VERSION}/${SL_ARCH}/
+# #MIRRORPLUS['ktown_testing']=http://bear.alienbase.nl/mirrors/alien-kde/${SL_VERSION}/testing/${SL_ARCH}/
+# MIRRORPLUS['ktown']=http://bear.alienbase.nl/mirrors/alien-kde/${SL_VERSION}/latest/${SL_ARCH}/
+# MIRRORPLUS['mate']=http://slackware.uk/msb/${SL_VERSION}/latest/${SL_ARCH}/ 
 #MIRRORPLUS['studioware']=http://slackware.uk/studioware/${SL_VERSION}/ 
 #EOPL
 #fi
@@ -1360,7 +1360,7 @@ if [ -f ${LIVE_ROOTDIR}/etc/rc.d/rc.networkmanager ]; then
   # Enable NetworkManager if present, and thus disable the default:
   chmod +x ${LIVE_ROOTDIR}/etc/rc.d/rc.networkmanager
   chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.inet1
-  chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.wireless
+  #chmod -x ${LIVE_ROOTDIR}/etc/rc.d/rc.wireless
   # And disable Slackware's own way of configuring eth0:
   cat <<EOT > ${LIVE_ROOTDIR}/etc/rc.d/rc.inet1.conf
 IFNAME[0]="eth0"
@@ -2099,7 +2099,7 @@ else
 fi
 
 # MOD by MDrights
-KVER="4.9.81"
+KVER="4.14.70"
 
 # Create an initrd for the generic kernel, using a modified init script:
 echo "-- Creating initrd for kernel-generic $KVER ..."
