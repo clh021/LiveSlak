@@ -5,6 +5,7 @@
 # Supplement some libs:
 gmtk
 libpaper
+qt5
 
 ## 输入法
 libxkbcommon
@@ -25,12 +26,12 @@ macchiato
 tor
 tor-hardened
 tor-browser
-tor-messenger
+#tor-messenger
 torsocks
 privoxy
 proxychains
 telegram
-riot
+riot-web
 
 udns
 mbedtls
@@ -51,7 +52,6 @@ v2ray
 ## 写写字
 #libreoffice			#用 Alien 的
 #libreoffice-langpack
-Ted
 docx2txt
 
 ## 保护菊花系列 - Protect-Your-Data-Goodies:
@@ -60,12 +60,12 @@ wipe
 secure-delete
 
 ## 这些只提供在cinnamon版里（因为需要的依赖包比较大/多）
-keepassx 
+keepassxc 
 jitsi
 nodejs
 nwjs
 rubygem-sass
-Signal-Desktop
+signal-desktop
 
 ## 支持中文的终端 (useful for cinnamon)
 #rxvt-unicode
@@ -73,6 +73,9 @@ Signal-Desktop
 ## 从其他仓库拽过来的 -Grab from others' repo 
 veracrypt
 virtualbox-kernel-addons
+
+## news reader
+newsboat
 
 # For Qemu VM:
 #spice-protocol
