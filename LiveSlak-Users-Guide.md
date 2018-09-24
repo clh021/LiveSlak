@@ -1,6 +1,6 @@
 ---
 layout: post
-date: 2018-02-19
+date: 2018-09-24
 ---
 
 ## LiveSlak 用户手册   
@@ -28,6 +28,8 @@ date: 2018-02-19
 2. 刻录到 USB盤上，插入任何一台电脑启动；（记得开机时进入BIOS设置为USB优先启动；刻录方法见[这里](https://rufus.akeo.ie/?locale=zh_CN)，或[这里](https://program-think.blogspot.com/2013/12/create-bootable-usb-stick-from-iso.html)。   
 - 这两种方法都不会访问和修改本来的系统和文件（除非你主动挂载）
 - 在开机画面可以选择不同的语言（目前有英语、简体中文、台湾正体、香港繁体、藏文、维吾尔文和日文；注：软件的中文化程度取决于各个软件项目作者和志愿者的努力，会有翻译不完整或错误的地方，本项目并不对此负责。）
+- 新版本目前简化一个登录软件（xdm），开机后进入命令行界面，输入用户名/密码后，执行 `startx` 即可进入桌面 :)
+
 
 ## 软件使用方法
 
@@ -37,22 +39,26 @@ date: 2018-02-19
 - NetworkManager
 	网络连接工具，如果你是用 USB盤啓動本系統的 XFCE版，請点击右上角图标连接WiFi（如果点出的菜单没有见到热点，很可能是本系统没有该机器无线网卡的驱动）；用虛擬機方式或其他版本則不必特意设置。    
 	（另，已MAC地址随机化处理可更好保護你的網上身份） 
-- icecat-hardened     
-	(浏览器增强版，在沙盒中运行，並并已安装了 `Noscript, HTTPSeverywhere, Privacy Badger` 插件及中文语言包；已默认设置为Socks代理（用于翻墙）和无痕浏览等。**记得刚开机时需要先开启一次 icecat 然后才能启动 icecat-hardened** （配置才能生效）；  
-	特別推薦使用icecat，如網頁顯示有問題请试试把 `Noscript` 设置为 「临时允许本页面所有对象」，再不行再轉 firefox吧；  
-	用它下载东西时请**不要**在浏览器里直接打开或“打开所在文件夹”（下载按钮里面的那个文件夹按钮），因为这是个浏览器的bug，而且不这样操作更安全。）   
+- icecat-hardened （暂取消，改回 Firefox）    
+	~~(浏览器增强版，在沙盒中运行，並并已安装了 `Noscript, HTTPSeverywhere, Privacy Badger` 插件及中文语言包；已默认设置为Socks代理（用于翻墙）和无痕浏览等。**记得刚开机时需要先开启一次 icecat 然后才能启动 icecat-hardened** （配置才能生效）；~~  
+	~~特別推薦使用icecat，如網頁顯示有問題请试试把 `Noscript` 设置为 「临时允许本页面所有对象」，再不行再轉 firefox吧；  
+	用它下载东西时请**不要**在浏览器里直接打开或“打开所在文件夹”（下载按钮里面的那个文件夹按钮），因为这是个浏览器的bug，而且不这样操作更安全。）~~   
 - Libreoffice 
 	（文檔編輯套件；已加入中文包，即界面是中文的了）
 - 挂载本地硬盘或外置存储（如U盘/移动硬盘等）    
 	（一般情况下直接在文件管理器左侧就能看到你机器本地的磁盘（分区）了；直接插入U盘一般都能识别。如有弹出提示要求密码的话，请输入 root（超级管理员）的密码：toor）    
+- Thunderbird  
+	(邮件客户端)
 
 ### 穿牆
 - Shadowsocks-libev 
 	（执行：`ss-local -c <你的ss配置文件>`）
 - Shadowsocks
-	(進入 `/opt/shadowsocks-git/shadowsocks`, 执行：`python local.py -c <你的ss配置文件>`)
-- ss-redir透明代理脚本（试验）
-	（在桌面菜单的「翻越长城」；点击前请把你的 ss 配置文件(json) 放在桌面并命名为 `ss-libev.json`。它随后会启动防火墙并要求输入密码 `live`）   
+	~~(進入 `/opt/shadowsocks-git/shadowsocks`, 执行：`python local.py -c <你的ss配置文件>`)~~  
+- ss-redir透明代理
+	(功能：让本地的或同一内网其他机器的软件无需自己设置便能走 ss 的代理（翻墙）。
+	 启动：用root执行：`/etc/rc.d/rc.ss-redir`，需在桌面放你的名为 `shadowsocks.json`的配置文件)	
+	(停止：用root执行：`/etc/rc.d/rc.firewall stop` )
 - v2ray    
 	(方法一：把你的配置文件放在桌面上并命名为 `v2ray.json`，然后点击 v2ray 图标；  
 	 方法二：打开一个终端，执行命令：`v2ray -config <你的配置文件及路径>`;    
@@ -63,20 +69,18 @@ date: 2018-02-19
 - Tor Browser 洋葱浏览器 ( & Tor 命令行版 )    
 	（記得啓動時，第一個問題選否（我們不用網橋），第二個選是（我們走本地代理），在Socks5處選擇 127.0.0.1 端口 1080 ）
 	（或者，使用网桥；目前（2017.11）推荐选 meek-amazon，或 meek-azure。）    
-- Tor Messenger 即时通讯软件   
-	（同上；可以有 XMPP，IRC，甚至 twitter 等多种协议）
-- Tor-nonprism(hardened)     
+- Tor-hardened     
 	（Tor 高級模式，功能包括：
 	1. Tor 會以 Stream Isolation模式開啓——即每類應用走不同的通道，避免監視者能通過對同一迴路的流量進行比對關聯而識別出用戶的身份（具體請自行谷歌~
 	2. 開啓帶有特別規則的防火牆，讓本地所有DNS請求強制走 Tor 隧道，避免 DNS 泄漏。啓動防火牆時需要輸入用戶密碼 `live`；  
 	3. 該防火牆還可讓本系統成爲 “洋蔥”網關（路由），讓在同一網絡中接入本機的機器流量完全/強制走 Tor隧道而不會出現泄漏（當然，還需要其他設置，如 ip_forward, 開啓DHCP server……恕不贅述）；
 	4. 開啓 sandbox沙盒模式 （待完成）   
  
-### 安全地聯繫 (部分软件只在cinnamon版才有)  
+### 安全地聯繫 
 - Telegram 
 	(記得可在設置裏設置 socks（1080）代理（翻牆），或 Tor（9050））
 - Tor-messenger   
-	(XMPP协议的通讯工具，Tor版）    
+	~~(XMPP协议的通讯工具，Tor版）~~    
 - Jitsi     
 	(加密視頻通訊軟件（也是XMPP协议的）；記得開啓 OTR 和 ZRTP 加密協議)
 - Hexchat    
@@ -85,13 +89,13 @@ date: 2018-02-19
 	（加密通讯软件；须先在移动设备安装Signal客户端，并有帐号）
 - Riot-web   
 	（新型“邦联化”聊天/协作工具，可以完美桥接 IRC，slack 等平台）   
-- qTox   
+- uTox   
 	（p2p架构的（去中心化）通讯工具）   
 
 ### 加密大法   
 - VeraCrypt     
 	（加密工具；）
-- keepassx    
+- keepassxc    
 	（密码管理器）
 - GnuPG     
 	(当然啦，GPG 是每款 GNU/Linux 都自带哒）
