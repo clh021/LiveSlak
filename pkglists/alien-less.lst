@@ -15,7 +15,7 @@ NetworkManager-openvpn
 gst-plugins-ffmpeg0
 gst-plugins-libav
 #keepassx  (don't install since I make my own)
-libreoffice
+#libreoffice
 #libreoffice-dict-en
 libreoffice-l10n-zh_CN
 libstatgrab

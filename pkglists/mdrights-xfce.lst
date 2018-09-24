@@ -19,6 +19,7 @@ rubygem-sass
 c-toxcore
 libfilteraudio
 check
+OpenAL
 
 ## 输入法
 libxkbcommon
@@ -53,7 +54,7 @@ uTox
 
 
 ## 写写字
-#libreoffice			#用 Alien 的
+libreoffice
 #libreoffice-langpack
 docx2txt
 
